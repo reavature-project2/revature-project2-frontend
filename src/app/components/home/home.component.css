@@ -1,0 +1,26 @@
+h2 {
+    text-align: center;
+}
+
+#vehicleInfo {
+    align-content: center;
+    width: 320px;
+    height: 300px;
+    border: 5px solid gray;
+    margin: 0;
+    display: inline-block;
+  }
+
+#vehicleInfo p {
+    margin-top: 0;
+}
+
+#carImage {
+    width: 320px;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+  }
