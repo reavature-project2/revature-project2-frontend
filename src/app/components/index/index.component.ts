@@ -18,5 +18,5 @@ export class IndexComponent implements OnInit {
   carImage = 'assets/car.jpg';
   carsImage = 'assets/cars.jpg';
   fDriver = 'assets/fDriver.jpg';
-  fCar = 'assets/familyCar.jpg'
+  fCar = 'assets/familyCar.jpg';
 }
