@@ -1,1 +1,25 @@
-<p>rental works!</p>
+<div id="main">
+    <div><img [src]="this.carImg" id="carImage">
+    </div>
+    <div id="vehicleInfo">
+        <p>Make: {{this.selectedCar.make | titlecase}}</p>
+        <p>Model: {{this.selectedCar.model | titlecase}}</p>
+        <p>Class: {{this.selectedCar.v_Class | titlecase}}</p>
+        <p>Year: {{this.selectedCar.v_Year}}</p>
+        <p>MPG: {{this.selectedCar.combination_mpg}}</p>
+        <p>Transmission: {{this.selectedCar.trans | titlecase}}</p>
+    </div>
+</div>
+
+
+<div id="rentalInfo">
+    <div id="inputInfo">
+        <label>Rental Date: </label><input type="date" [(ngModel)]="rentDate" (change)="setRentDate()"><br>
+        <label>Rental Date: </label><input type="date" [(ngModel)]="returnDate" (change)="setReturnDate()"><br>
+        <label>Purchase Insurance?: </label><input type="checkbox" (change)="setInsurance()"><br>
+        <label>Price: </label><input type="text" value={{price}} class="left field" readonly><br>
+        <label>Credit Card Number: </label><input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"><br>
+        <label>Billing Address: </label><input type="text"><br>
+        <br><input type="submit" value="Submit" (click)="this.sendInfo()">
+    </div>
+</div>
