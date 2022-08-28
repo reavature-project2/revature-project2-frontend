@@ -12,6 +12,7 @@ import { RentalComponent } from './components/rental/rental.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { RegisterComponent } from './components/register/register.component';
     IndexComponent,
     CarouselComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
