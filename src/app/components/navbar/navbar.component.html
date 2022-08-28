@@ -6,7 +6,7 @@
             <button class="btn  btn-outline-info me-3" routerLink="/profile">Profile</button>
             <button class="btn  btn-outline-info" (click)="logout()">Logout</button>
         </div>
-            <div class="navbar-nav d-inline">
+            <div class="navbar-nav d-inline" *ngIf="!loggedIn">
                 <button class="btn  btn-outline-info me-3" routerLink="/login">Login</button>
                 <button class="btn  btn-outline-info" routerLink="/register">Register</button>
             </div>
