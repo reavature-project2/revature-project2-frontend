@@ -3,12 +3,15 @@ import { ClientMessage } from './../../models/client-message';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { Car } from 'src/app/models/car';
+import { Router, RouterLink } from '@angular/router';
+import { RentalComponent } from '../rental/rental.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent implements OnInit{
 
   title = 'Home Page'
@@ -21,9 +24,10 @@ export class HomeComponent implements OnInit{
   van1: Car = new Car('A', 'A', 0, 'A', 0, 'A')
   van2: Car = new Car('A', 'A', 0, 'A', 0, 'A')
   clientMessage: ClientMessage = new ClientMessage('');
+  
 
 
-  constructor(private apiService: ApiService, public appComponent: AppComponent) { }
+  constructor(private apiService: ApiService, public appComponent: AppComponent, private router: Router) { }
 
   getSuvs() {
     this.apiService.getSuvList()
@@ -115,6 +119,54 @@ export class HomeComponent implements OnInit{
       error: () => this.clientMessage.message = `Could not find vehicle.`,
       complete: () => console.log('complete')
     })
+  }
+
+  sedanOne() {
+    sessionStorage.setItem('token', '3dsjas83hfa8dsfh38asdhfhas');
+    sessionStorage.setItem('vehicle', 's1');
+    this.router.navigate(['/rental']);
+  }
+
+  sedanTwo() {
+    sessionStorage.setItem('token', '3dsjas83hfa8dsfh38asdhfhas');
+    sessionStorage.setItem('vehicle', 's2');
+    this.router.navigate(['/rental']);
+  }
+
+  suvOne() {
+    sessionStorage.setItem('token', '3dsjas83hfa8dsfh38asdhfhas');
+    sessionStorage.setItem('vehicle', 'su1');
+    this.router.navigate(['/rental']);
+  }
+
+  suvTwo() {
+    sessionStorage.setItem('token', '3dsjas83hfa8dsfh38asdhfhas');
+    sessionStorage.setItem('vehicle', 'su2');
+    this.router.navigate(['/rental']);
+  }
+
+  truckOne() {
+    sessionStorage.setItem('token', '3dsjas83hfa8dsfh38asdhfhas');
+    sessionStorage.setItem('vehicle', 't1');
+    this.router.navigate(['/rental']);
+  }
+
+  truckTwo() {
+    sessionStorage.setItem('token', '3dsjas83hfa8dsfh38asdhfhas');
+    sessionStorage.setItem('vehicle', 't2');
+    this.router.navigate(['/rental']);
+  }
+
+  vanOne() {
+    sessionStorage.setItem('token', '3dsjas83hfa8dsfh38asdhfhas');
+    sessionStorage.setItem('vehicle', 'v1');
+    this.router.navigate(['/rental']);
+  }
+
+  vanTwo() {
+    sessionStorage.setItem('token', '3dsjas83hfa8dsfh38asdhfhas');
+    sessionStorage.setItem('vehicle', 'v2');
+    this.router.navigate(['/rental']);
   }
 
   ngOnInit(): void {

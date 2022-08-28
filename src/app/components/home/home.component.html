@@ -10,12 +10,14 @@
                 <p>Make: {{this.sedan1.make | titlecase}} Year: {{this.sedan1.v_Year}}</p>
                 <p>Model: {{this.sedan1.model | titlecase}} Class: {{this.sedan1.v_Class | titlecase}}</p>
                 <p>MPG: {{this.sedan1.combination_mpg}} Trans: {{this.sedan1.trans | titlecase}}</p>
+                <div type="button" (click)="sedanOne()"><button type="button" >Rent Me</button></div>
             </div>
             <div id="vehicleInfo">
                 <img src="../../../assets/volkswagen-passat-m.jpg" id="carImage">
                 <p>Make: {{this.sedan2.make | titlecase}} Year: {{this.sedan2.v_Year}}</p>
                 <p>Model: {{this.sedan2.model | titlecase}} Class: {{this.sedan2.v_Class | titlecase}}</p>
                 <p>MPG: {{this.sedan2.combination_mpg}} Trans: {{this.sedan2.trans | titlecase}}</p>
+                <button type="button" (click)="sedanTwo()">Rent Me</button>
             </div>
         </div><br>
 
@@ -25,12 +27,14 @@
                 <p>Make: {{this.suv1.make | titlecase}} Year: {{this.suv1.v_Year}}</p>
                 <p>Model: {{this.suv1.model | titlecase}} Class: {{this.suv1.v_Class | titlecase}}</p>
                 <p>MPG: {{this.suv1.combination_mpg}} Trans: {{this.suv1.trans | titlecase}}</p>
+                <button type="button" (click)="suvOne()">Rent Me</button>
             </div>
             <div id="vehicleInfo">
                 <img src="../../../assets/mazda-navajo-m.jpg" id="carImage">
                 <p>Make: {{this.suv2.make | titlecase}} Year: {{this.suv2.v_Year}}</p>
                 <p>Model: {{this.suv2.model | titlecase}} Class: {{this.suv2.v_Class | titlecase}}</p>
                 <p>MPG: {{this.suv2.combination_mpg}} Trans: {{this.suv2.trans | titlecase}}</p>
+                <button type="button" (click)="suvTwo()">Rent Me</button>
             </div>
         </div><br>
 
@@ -38,14 +42,16 @@
             <div id="vehicleInfo">
                 <img src="../../../assets/ford-f150-a.jpg" id="carImage">
                 <p>Make: {{this.truck1.make | titlecase}} Year: {{this.truck1.v_Year}}</p>
-                <p>Model: F150 Class: {{this.truck1.v_Class | titlecase}}</p>
+                <p>Model: {{this.truck1.model | titlecase}} Class: {{this.truck1.v_Class | titlecase}}</p>
                 <p>MPG: {{this.truck1.combination_mpg}} Trans: {{this.truck1.trans | titlecase}}</p>
+                <button type="button" (click)="truckOne()">Rent Me</button>
             </div>
             <div id="vehicleInfo">
                 <img src="../../../assets/ford-f150-m.jpg" id="carImage">
                 <p>Make: {{this.truck2.make | titlecase}} Year: {{this.truck2.v_Year}}</p>
-                <p>Model: F150 Class: {{this.truck2.v_Class | titlecase}}</p>
+                <p>Model: {{this.truck1.model | titlecase}} Class: {{this.truck2.v_Class | titlecase}}</p>
                 <p>MPG: {{this.truck2.combination_mpg}} Trans: {{this.truck2.trans | titlecase}}</p>
+                <button type="button" (click)="truckTwo()">Rent Me</button>
             </div>
         </div><br>
 
@@ -55,12 +61,14 @@
                 <p>Make: {{this.van1.make | titlecase}} Year: {{this.van1.v_Year}}</p>
                 <p>Model: {{this.van1.model | titlecase}} Class: {{this.van1.v_Class | titlecase}}</p>
                 <p>MPG: {{this.van1.combination_mpg}} Trans: {{this.van1.trans | titlecase}}</p>
+                <button type="button" (click)="vanOne()">Rent Me</button>
             </div>
             <div id="vehicleInfo">
                 <img src="../../../assets/volkswagen-vanagon-m.jpg" id="carImage">
                 <p>Make: {{this.van2.make | titlecase}} Year: {{this.van2.v_Year}}</p>
                 <p>Model: {{this.van2.model | titlecase}} Class: {{this.van2.v_Class | titlecase}}</p>
                 <p>MPG: {{this.van2.combination_mpg}} Trans: {{this.van2.trans | titlecase}}</p>
+                <button type="button" (click)="vanTwo()">Rent Me</button>
             </div>
         </div>
 
