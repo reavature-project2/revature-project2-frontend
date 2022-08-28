@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col">
+        <app-carousel></app-carousel>
+    </div>
+    <div class="col d-flex align-items-center">
+        <div class="container pt-5">
+            <h3 class="text-center mb-3">Hey Runner Welcome Back!</h3>
+            <div class="alert alert-danger w-75 mx-auto text-center" role="alert" *ngIf="this.errorMessage">
+                {{this.errorMessage}}
+              </div>
+            <div class="mb-3 w-75 mx-auto">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" class="form-control w-100" id="exampleInputEmail1" [(ngModel)]="email" >
+              </div>
+              <div class="mb-3 w-75 mx-auto">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control w-100" id="exampleInputPassword1" [(ngModel)]="password">
+              </div>
+              <div  class="mb-3 w-75 mx-auto">
+                <button type="button" class="btn btn-primary w-100 mb-3" (click)="login()">Login</button>
+                <h6 class="text-center">Dont Have An Account? <span routerLink="/register">Register</span></h6>
+            </div>
+            
+        </div>
+    </div>
+</div>
