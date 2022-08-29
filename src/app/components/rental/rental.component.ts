@@ -13,7 +13,7 @@ import { HomeComponent } from '../home/home.component';
 })
 export class RentalComponent implements OnInit {
 
-  selectedCar: Car = new Car('A', 'A', 0, 'A', 0, 'A');
+  selectedCar: Car = new Car('A', 'A', 0, 'A', 'A');
   clientMessage: ClientMessage = new ClientMessage('');
   rentDate: string = '';
   rentDateU;
@@ -33,12 +33,12 @@ export class RentalComponent implements OnInit {
     this.rentalInfo.push({"rentDate" : this.rentDateU})
     this.rentalInfo.push({"returnDate" : this.returnDateU})
     this.rentalInfo.push({"price" : this.price})
-    this.rentalInfo.push({"make" : this.selectedCar.make})
-    this.rentalInfo.push({"model" : this.selectedCar.model})
-    this.rentalInfo.push({"v_Year" : this.selectedCar.v_Year})
-    this.rentalInfo.push({"v_class" : this.selectedCar.v_Class})
-    this.rentalInfo.push({"mpg" : this.selectedCar.combination_mpg})
-    this.rentalInfo.push({"trans" : this.selectedCar.trans})
+    this.rentalInfo.push({"make" : this.selectedCar.car_make})
+    this.rentalInfo.push({"model" : this.selectedCar.car_model})
+    this.rentalInfo.push({"v_Year" : this.selectedCar.car_year})
+    this.rentalInfo.push({"v_class" : this.selectedCar.car_class})
+    // this.rentalInfo.push({"mpg" : this.selectedCar.combination_mpg})
+    this.rentalInfo.push({"trans" : this.selectedCar.car_trans})
     console.log(this.rentalInfo)
     this.apiService.sendRental(this.rentalInfo)
     .subscribe({
@@ -118,12 +118,12 @@ export class RentalComponent implements OnInit {
       this.apiService.getVanList()
       .subscribe({
         next: (data) => {
-          this.selectedCar.make = data[1].make;
-          this.selectedCar.model = data[1].model;
-          this.selectedCar.v_Year = data[1].year;
-          this.selectedCar.v_Class = data[1].class;
-          this.selectedCar.combination_mpg = data[1].combination_mpg;
-          this.selectedCar.trans = data[1].transmission;
+          this.selectedCar.car_make = data[1].make;
+          this.selectedCar.car_model = data[1].model;
+          this.selectedCar.car_year = data[1].year;
+          this.selectedCar.car_class = data[1].class;
+          // this.selectedCar.combination_mpg = data[1].combination_mpg;
+          this.selectedCar.car_trans = data[1].transmission;
           console.log(data);
         },
         error: () => this.clientMessage.message = `Could not find vehicle.`,
@@ -134,12 +134,12 @@ export class RentalComponent implements OnInit {
       this.apiService.getSedanList()
       .subscribe({
         next: (data) => {
-          this.selectedCar.make = data[0].make;
-          this.selectedCar.model = data[0].model;
-          this.selectedCar.v_Year = data[0].year;
-          this.selectedCar.v_Class = data[0].class;
-          this.selectedCar.combination_mpg = data[0].combination_mpg;
-          this.selectedCar.trans = data[0].transmission;
+          this.selectedCar.car_make = data[0].make;
+          this.selectedCar.car_model = data[0].model;
+          this.selectedCar.car_year = data[0].year;
+          this.selectedCar.car_class = data[0].class;
+          // this.selectedCar.combination_mpg = data[0].combination_mpg;
+          this.selectedCar.car_trans = data[0].transmission;
           console.log(data);
         },
         error: () => this.clientMessage.message = `Could not find vehicle.`,
@@ -150,12 +150,12 @@ export class RentalComponent implements OnInit {
       this.apiService.getSedanList()
       .subscribe({
         next: (data) => {
-          this.selectedCar.make = data[1].make;
-          this.selectedCar.model = data[1].model;
-          this.selectedCar.v_Year = data[1].year;
-          this.selectedCar.v_Class = data[1].class;
-          this.selectedCar.combination_mpg = data[1].combination_mpg;
-          this.selectedCar.trans = data[1].transmission;
+          this.selectedCar.car_make = data[1].make;
+          this.selectedCar.car_model = data[1].model;
+          this.selectedCar.car_year = data[1].year;
+          this.selectedCar.car_class = data[1].class;
+          // this.selectedCar.combination_mpg = data[1].combination_mpg;
+          this.selectedCar.car_trans = data[1].transmission;
           console.log(data);
         },
         error: () => this.clientMessage.message = `Could not find vehicle.`,
@@ -166,12 +166,12 @@ export class RentalComponent implements OnInit {
       this.apiService.getSuvList()
       .subscribe({
         next: (data) => {
-          this.selectedCar.make = data[0].make;
-          this.selectedCar.model = data[0].model;
-          this.selectedCar.v_Year = data[0].year;
-          this.selectedCar.v_Class = data[0].class;
-          this.selectedCar.combination_mpg = data[0].combination_mpg;
-          this.selectedCar.trans = data[0].transmission;
+          this.selectedCar.car_make = data[0].make;
+          this.selectedCar.car_model = data[0].model;
+          this.selectedCar.car_year = data[0].year;
+          this.selectedCar.car_class = data[0].class;
+          // this.selectedCar.combination_mpg = data[0].combination_mpg;
+          this.selectedCar.car_trans = data[0].transmission;
           console.log(data);
         },
         error: () => this.clientMessage.message = `Could not find vehicle.`,
@@ -182,12 +182,12 @@ export class RentalComponent implements OnInit {
       this.apiService.getSuvList()
       .subscribe({
         next: (data) => {
-          this.selectedCar.make = data[1].make;
-          this.selectedCar.model = data[1].model;
-          this.selectedCar.v_Year = data[1].year;
-          this.selectedCar.v_Class = data[1].class;
-          this.selectedCar.combination_mpg = data[1].combination_mpg;
-          this.selectedCar.trans = data[1].transmission;
+          this.selectedCar.car_make = data[1].make;
+          this.selectedCar.car_model = data[1].model;
+          this.selectedCar.car_year = data[1].year;
+          this.selectedCar.car_class = data[1].class;
+          // this.selectedCar.combination_mpg = data[1].combination_mpg;
+          this.selectedCar.car_trans = data[1].transmission;
           console.log(data);
         },
         error: () => this.clientMessage.message = `Could not find vehicle.`,
@@ -198,12 +198,12 @@ export class RentalComponent implements OnInit {
       this.apiService.getTruckList()
       .subscribe({
         next: (data) => {
-          this.selectedCar.make = data[0].make;
-          this.selectedCar.model = data[0].model;
-          this.selectedCar.v_Year = data[0].year;
-          this.selectedCar.v_Class = data[0].class;
-          this.selectedCar.combination_mpg = data[0].combination_mpg;
-          this.selectedCar.trans = data[0].transmission;
+          this.selectedCar.car_make = data[0].make;
+          this.selectedCar.car_model = data[0].model;
+          this.selectedCar.car_year = data[0].year;
+          this.selectedCar.car_class = data[0].class;
+          // this.selectedCar.combination_mpg = data[0].combination_mpg;
+          this.selectedCar.car_trans = data[0].transmission;
           console.log(data);
         },
         error: () => this.clientMessage.message = `Could not find vehicle.`,
@@ -214,12 +214,12 @@ export class RentalComponent implements OnInit {
       this.apiService.getTruckList()
       .subscribe({
         next: (data) => {
-          this.selectedCar.make = data[1].make;
-          this.selectedCar.model = data[1].model;
-          this.selectedCar.v_Year = data[1].year;
-          this.selectedCar.v_Class = data[1].class;
-          this.selectedCar.combination_mpg = data[1].combination_mpg;
-          this.selectedCar.trans = data[1].transmission;
+          this.selectedCar.car_make = data[1].make;
+          this.selectedCar.car_model = data[1].model;
+          this.selectedCar.car_year = data[1].year;
+          this.selectedCar.car_class = data[1].class;
+          // this.selectedCar.combination_mpg = data[1].combination_mpg;
+          this.selectedCar.car_trans = data[1].transmission;
           console.log(data);
         },
         error: () => this.clientMessage.message = `Could not find vehicle.`,
@@ -230,12 +230,12 @@ export class RentalComponent implements OnInit {
       this.apiService.getVanList()
       .subscribe({
         next: (data) => {
-          this.selectedCar.make = data[0].make;
-          this.selectedCar.model = data[0].model;
-          this.selectedCar.v_Year = data[0].year;
-          this.selectedCar.v_Class = data[0].class;
-          this.selectedCar.combination_mpg = data[0].combination_mpg;
-          this.selectedCar.trans = data[0].transmission;
+          this.selectedCar.car_make = data[0].make;
+          this.selectedCar.car_model = data[0].model;
+          this.selectedCar.car_year = data[0].year;
+          this.selectedCar.car_class = data[0].class;
+          // this.selectedCar.combination_mpg = data[0].combination_mpg;
+          this.selectedCar.car_trans = data[0].transmission;
           console.log(data);
         },
         error: () => this.clientMessage.message = `Could not find vehicle.`,
