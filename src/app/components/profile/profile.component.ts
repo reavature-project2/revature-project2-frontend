@@ -7,13 +7,14 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-pastRentalInfo: any[] =[1];
-currentRentalInfo: any[] =[1];
-futureRentalInfo: any[] =[1];
+pastRentalInfo: any[] =[];
+currentRentalInfo: any[] =[];
+futureRentalInfo: any[] =[];
 showField: boolean = false;
   constructor(private apiService:ApiService) { }
 
   ngOnInit(): void {
+    this.getRentals()
   }
 
   setShowField(){
@@ -27,11 +28,11 @@ showField: boolean = false;
     this.apiService.getRentals().subscribe({
       next:(response)=>{
         response.forEach(rental =>{
-          if(rental.returnDate < unixDate){
+          if(rental.returnDateU < unixDate){
             this.pastRentalInfo.push(rental);
-          }else if(rental.returnDate > unixDate){
+          }else if((rental.returnDateU > unixDate) &&(rental.rentDateU < unixDate)){
             this.currentRentalInfo.push(rental);
-          }else if(rental.startDate > unixDate){
+          }else if(rental.rentDateU > unixDate){
             this.futureRentalInfo.push(rental);
           }
         })
