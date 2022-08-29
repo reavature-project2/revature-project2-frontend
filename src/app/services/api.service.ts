@@ -13,7 +13,7 @@ export class ApiService {
   
   httpOptionsRent = {
     headers: new HttpHeaders({'Content-Type' : 'application/json',
-    'token' : `${this.sessionToken}`})
+    'rolodex-token' : `${this.sessionToken}`})
   }
 
   autherHeader = {
@@ -29,6 +29,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   sendRental(rentalInfo): Observable<any> {
+    console.log(this.httpOptionsRent)
     return this.http.post<any>(`${this.baseUrl}rental`, rentalInfo, this.httpOptionsRent)    
   }
 

@@ -13,8 +13,8 @@ export class AuthService {
 
   login(email: string, password: string): Observable<any> {
     const body = {
-      "email": email,
-      "pass": password
+      "username": email,
+      "password": password
     }
     return this.http.post<HttpResponse<any>>(`${this.baseUrl}login`, body, { headers: this.header, observe: 'response' })
       .pipe(catchError(this.handleError));
@@ -25,7 +25,7 @@ export class AuthService {
       "f_name" : fname,
       "l_name" : lname,
       "age": age,
-       "email" : email,
+      "email" : email,
       "pass" : password,
       "dr_lic_number" : dlnum
     }
