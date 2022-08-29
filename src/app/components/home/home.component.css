@@ -2,34 +2,85 @@ h2 {
     text-align: center;
 }
 
-#vehicleInfo {
+#sedanInfo, #suvInfo, #truckInfo, #vanInfo {
     align-content: center;
-    width: 320px;
+    border: 3px solid #fff;
+    padding: 20px;
+    /* width: 320px;
     height: 300px;
-    border: 5px solid gray;
+    border: 5px solid gray; */
     margin: 0;
-    display: inline-block;
   }
 
-#vehicleInfo p {
-    margin-top: 0;
+#vehicleInfo {
+    width: 50%;
+    float: left;
+    padding: 20px;
+    border: 2px solid rgb(245, 238, 238);
+    border-radius: 5%;
+    background-color: rgb(233, 222, 222);
 }
 
 #carImage {
-    width: 320px;
+    width: 100%;
+    border-radius: 15px;
 }
 
 .center {
     margin: auto;
-    width: 50%;
-    padding: 10px;
+    /* width: 50%; */
+    /* padding: 10px; */
   }
 
-/* .button {
+button {
     margin: 0;
     position: relative;
     top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    left: 5%;
+    width: 90%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 5px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* #leftLabel {
+    position: relative;
+
 } */
+
+/* #rightLabel {
+    margin-right: 5%;
+    position: absolute;
+} */
+
+/* button {
+    width: 90%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+} */
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid rgb(245, 169, 169);
+    border-collapse: collapse;
+}
+
+tr, td {
+    border: 1px solid rgb(245, 169, 169);
+    padding: 10px;
+    border-radius: 5%;
+    background-color: white;
+}
+
+
+
