@@ -4,16 +4,16 @@
             <img [src]="this.carImg" id="carImage">
             <table>
                 <tr>
-                <td style="font-size:1.5vw">Make: {{this.selectedCar.make | titlecase}}</td>
-                <td style="font-size:1.5vw">Model: {{this.selectedCar.model | titlecase}}</td>
+                <td style="font-size:1.5vw">Make: {{this.selectedCar.car_make | titlecase}}</td>
+                <td style="font-size:1.5vw">Model: {{this.selectedCar.car_model | titlecase}}</td>
                 </tr>
                 <tr>
-                    <td style="font-size:1.5vw">MPG: {{this.selectedCar.combination_mpg}}</td>
-                    <td style="font-size:1.5vw">Year: {{this.selectedCar.v_Year}}</td>
+                    <!-- <td style="font-size:1.5vw">MPG: {{this.selectedCar.combination_mpg}}</td> -->
+                    <td style="font-size:1.5vw">Year: {{this.selectedCar.car_year}}</td>
                 </tr>
                 <tr>
-                    <td style="font-size:1.5vw">Class: {{this.selectedCar.v_Class | titlecase}}</td>
-                    <td style="font-size:1.5vw">Trans: {{this.selectedCar.trans | titlecase}}</td>
+                    <td style="font-size:1.5vw">Class: {{this.selectedCar.car_class | titlecase}}</td>
+                    <td style="font-size:1.5vw">Trans: {{this.selectedCar.car_trans | titlecase}}</td>
                 </tr>
             </table><br>
     </div>

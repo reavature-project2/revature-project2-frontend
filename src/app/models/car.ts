@@ -1,23 +1,23 @@
 export class Car {
-    make: string;
-    model: string;
-    v_Year: number;
-    v_Class: string;
-    combination_mpg: number;
-    trans: string;
+    car_make: string;
+    car_model: string;
+    car_year: number;
+    car_class: string;
+    //combination_mpg: number;
+    car_trans: string;
 
     constructor(make: string, model: string, v_Year: number, v_Class: string, 
-        combination_mpg: number, trans: string) {
-        this.make = make
-        if(this.model === 'f150 pickup 2wd') {
-          this.model = 'F150'
+ trans: string) {
+        this.car_make = make
+        if(this.car_model === 'f150 pickup 2wd') {
+          this.car_model = 'F150'
         } else {
-          this.model = model
+          this.car_model = model
         }
-        this.model = model
-        this.v_Year = v_Year
-        this.v_Class = v_Class
-        this.combination_mpg = combination_mpg
-        this.trans = trans
+        this.car_model = model
+        this.car_year = v_Year
+        this.car_class = v_Class
+        // this.combination_mpg = combination_mpg
+        this.car_trans = trans
       }
 }

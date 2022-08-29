@@ -20,8 +20,16 @@ export class AuthService {
       .pipe(catchError(this.handleError));
   }
 
-  register(user: User): Observable<HttpResponse<any>> {
-    return this.http.post<any>(`${this.baseUrl}register`, user, { headers: this.header, observe: 'response' })
+  register(fname : string, lname : string, email: string, age : number, dlnum :string, password: string): Observable<HttpResponse<any>> {
+    const body = {
+      "f_name" : fname,
+      "l_name" : lname,
+      "age": age,
+       "email" : email,
+      "pass" : password,
+      "dr_lic_number" : dlnum
+    }
+    return this.http.post<any>(`${this.baseUrl}register`, body, { headers: this.header, observe: 'response' })
       .pipe(catchError(this.handleError));
   }
 

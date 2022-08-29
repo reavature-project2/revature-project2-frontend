@@ -8,16 +8,16 @@
                 <img src="../../../assets/volkswagen-passat-a.jpg" id="carImage">
                 <table style="width:85%">
                     <tr>
-                      <td>Make: {{this.sedan1.make | titlecase}}</td>
-                      <td>Model: {{this.sedan1.model | titlecase}}</td>
+                      <td>Make: {{this.sedan1.car_make | titlecase}}</td>
+                      <td>Model: {{this.sedan1.car_model | titlecase}}</td>
                     </tr>
                     <tr>
-                        <td>MPG: {{this.sedan1.combination_mpg}}</td>
-                        <td>Year: {{this.sedan1.v_Year}}</td>
+                        <!-- <td>MPG: {{this.sedan1.combination_mpg}}</td> -->
+                        <td>Year: {{this.sedan1.car_year}}</td>
                     </tr>
                     <tr>
-                        <td>Class: {{this.sedan1.v_Class | titlecase}}</td>
-                        <td>Trans: {{this.sedan1.trans | titlecase}}</td>
+                        <td>Class: {{this.sedan1.car_class | titlecase}}</td>
+                        <td>Trans: {{this.sedan1.car_trans | titlecase}}</td>
                     </tr>
                 </table>
                 <button class="center" type="button" (click)="sedanOne()">Rent Me</button>
@@ -26,16 +26,16 @@
                 <img src="../../../assets/volkswagen-passat-m.jpg" id="carImage">
                 <table style="width:85%">
                     <tr>
-                      <td>Make: {{this.sedan2.make | titlecase}}</td>
-                      <td>Model: {{this.sedan2.model | titlecase}}</td>
+                      <td>Make: {{this.sedan2.car_make | titlecase}}</td>
+                      <td>Model: {{this.sedan2.car_make | titlecase}}</td>
                     </tr>
                     <tr>
-                        <td>MPG: {{this.sedan2.combination_mpg}}</td>
-                        <td>Year: {{this.sedan2.v_Year}}</td>
+                        <!-- <td>MPG: {{this.sedan2.combination_mpg}}</td> -->
+                        <td>Year: {{this.sedan2.car_year}}</td>
                     </tr>
                     <tr>
-                        <td>Class: {{this.sedan2.v_Class | titlecase}}</td>
-                        <td>Trans: {{this.sedan2.trans | titlecase}}</td>
+                        <td>Class: {{this.sedan2.car_class | titlecase}}</td>
+                        <td>Trans: {{this.sedan2.car_trans | titlecase}}</td>
                     </tr>
                 </table>
                 <button class="center" type="button" (click)="sedanTwo()">Rent Me</button>
@@ -47,16 +47,16 @@
                 <img src="../../../assets/mazda-navajo-a.jpg" id="carImage">
                 <table style="width:85%">
                     <tr>
-                      <td>Make: {{this.suv1.make | titlecase}}</td>
-                      <td>Model: {{this.suv1.model | titlecase}}</td>
+                      <td>Make: {{this.suv1.car_make | titlecase}}</td>
+                      <td>Model: {{this.suv1.car_make | titlecase}}</td>
                     </tr>
                     <tr>
-                        <td>MPG: {{this.suv1.combination_mpg}}</td>
-                        <td>Year: {{this.suv1.v_Year}}</td>
+                        <!-- <td>MPG: {{this.suv1.combination_mpg}}</td> -->
+                        <td>Year: {{this.suv1.car_year}}</td>
                     </tr>
                     <tr>
-                        <td>Class: {{this.suv1.v_Class | titlecase}}</td>
-                        <td>Trans: {{this.suv1.trans | titlecase}}</td>
+                        <td>Class: {{this.suv1.car_class | titlecase}}</td>
+                        <td>Trans: {{this.suv1.car_trans | titlecase}}</td>
                     </tr>
                 </table>
                 <button class="center" type="button" (click)="suvOne()">Rent Me</button>
@@ -65,16 +65,16 @@
                 <img src="../../../assets/mazda-navajo-m.jpg" id="carImage">
                 <table style="width:85%">
                     <tr>
-                      <td>Make: {{this.suv2.make | titlecase}}</td>
-                      <td>Model: {{this.suv2.model | titlecase}}</td>
+                      <td>Make: {{this.suv2.car_make | titlecase}}</td>
+                      <td>Model: {{this.suv2.car_make | titlecase}}</td>
                     </tr>
                     <tr>
-                        <td>MPG: {{this.suv2.combination_mpg}}</td>
-                        <td>Year: {{this.suv2.v_Year}}</td>
+                        <!-- <td>MPG: {{this.suv2.combination_mpg}}</td> -->
+                        <td>Year: {{this.suv2.car_year}}</td>
                     </tr>
                     <tr>
-                        <td>Class: {{this.suv2.v_Class | titlecase}}</td>
-                        <td>Trans: {{this.suv2.trans | titlecase}}</td>
+                        <td>Class: {{this.suv2.car_class | titlecase}}</td>
+                        <td>Trans: {{this.suv2.car_trans | titlecase}}</td>
                     </tr>
                 </table>
                 <button class="center" type="button" (click)="suvTwo()">Rent Me</button>
@@ -86,16 +86,16 @@
                 <img src="../../../assets/ford-f150-a.jpg" id="carImage">
                 <table style="width:85%">
                     <tr>
-                      <td>Make: {{this.truck1.make | titlecase}}</td>
+                      <td>Make: {{this.truck1.car_make | titlecase}}</td>
                       <td>Model: F150</td>
                     </tr>
                     <tr>
-                        <td>MPG: {{this.truck1.combination_mpg}}</td>
-                        <td>Year: {{this.truck1.v_Year}}</td>
+                        <!-- <td>MPG: {{this.truck1.combination_mpg}}</td> -->
+                        <td>Year: {{this.truck1.car_year}}</td>
                     </tr>
                     <tr>
                         <td>Class: Pickup Truck</td>
-                        <td>Trans: {{this.truck1.trans | titlecase}}</td>
+                        <td>Trans: {{this.truck1.car_trans | titlecase}}</td>
                     </tr>
                 </table>
                 <button class="center" type="button" (click)="truckOne()">Rent Me</button>
@@ -104,16 +104,16 @@
                 <img src="../../../assets/ford-f150-m.jpg" id="carImage">
                 <table style="width:85%">
                     <tr>
-                      <td>Make: {{this.truck2.make | titlecase}}</td>
+                      <td>Make: {{this.truck2.car_make | titlecase}}</td>
                       <td>Model: F150</td>
                     </tr>
                     <tr>
-                        <td>MPG: {{this.truck2.combination_mpg}}</td>
-                        <td>Year: {{this.truck2.v_Year}}</td>
+                        <!-- <td>MPG: {{this.truck2.combination_mpg}}</td> -->
+                        <td>Year: {{this.truck2.car_year}}</td>
                     </tr>
                     <tr>
                         <td>Class: Pickup Truck</td>
-                        <td>Trans: {{this.truck2.trans | titlecase}}</td>
+                        <td>Trans: {{this.truck2.car_trans | titlecase}}</td>
                     </tr>
                 </table>
                 <button class="center" type="button" (click)="truckTwo()">Rent Me</button>
@@ -125,16 +125,16 @@
                 <img src="../../../assets/volkswagen-vanagon-a.jpg" id="carImage">
                 <table style="width:85%">
                     <tr>
-                      <td>Make: {{this.van1.make | titlecase}}</td>
-                      <td>Model: {{this.van1.model | titlecase}}</td>
+                      <td>Make: {{this.van1.car_make | titlecase}}</td>
+                      <td>Model: {{this.van1.car_make | titlecase}}</td>
                     </tr>
                     <tr>
-                        <td>MPG: {{this.van1.combination_mpg}}</td>
-                        <td>Year: {{this.van1.v_Year}}</td>
+                        <!-- <td>MPG: {{this.van1.combination_mpg}}</td> -->
+                        <td>Year: {{this.van1.car_year}}</td>
                     </tr>
                     <tr>
-                        <td>Class: {{this.van1.v_Class | titlecase}}</td>
-                        <td>Trans: {{this.van1.trans | titlecase}}</td>
+                        <td>Class: {{this.van1.car_class | titlecase}}</td>
+                        <td>Trans: {{this.van1.car_trans | titlecase}}</td>
                     </tr>
                 </table>
                 <button class="center" type="button" (click)="vanOne()">Rent Me</button>
@@ -143,16 +143,16 @@
                 <img src="../../../assets/volkswagen-vanagon-m.jpg" id="carImage">
                 <table style="width:85%">
                     <tr>
-                      <td>Make: {{this.van2.make | titlecase}}</td>
-                      <td>Model: {{this.van2.model | titlecase}}</td>
+                      <td>Make: {{this.van2.car_make | titlecase}}</td>
+                      <td>Model: {{this.van2.car_make | titlecase}}</td>
                     </tr>
                     <tr>
-                        <td>MPG: {{this.van2.combination_mpg}}</td>
-                        <td>Year: {{this.van2.v_Year}}</td>
+                        <!-- <td>MPG: {{this.van2.combination_mpg}}</td> -->
+                        <td>Year: {{this.van2.car_year}}</td>
                     </tr>
                     <tr>
-                        <td>Class: {{this.van2.v_Class | titlecase}}</td>
-                        <td>Trans: {{this.van2.trans | titlecase}}</td>
+                        <td>Class: {{this.van2.car_class | titlecase}}</td>
+                        <td>Trans: {{this.van2.car_trans | titlecase}}</td>
                     </tr>
                 </table>
                 <button class="center" type="button" (click)="vanTwo()">Rent Me</button>

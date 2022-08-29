@@ -36,8 +36,8 @@ export class RegisterComponent implements OnInit {
       return
     }
     else {
-      let user: User = new User(this.fname, this.lname, this.email, this.age, this.dlnum, this.password)
-      this.authService.register(user).subscribe({
+      // let user: User = new User(this.fname, this.lname, this.email, this.age, this.dlnum, this.password)
+      this.authService.register(this.fname, this.lname, this.email, this.age, this.dlnum, this.password).subscribe({
         next: (response) => {
           let token = response.headers.get('rolodex-token');
           sessionStorage.setItem('token', token);
