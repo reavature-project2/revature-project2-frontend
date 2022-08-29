@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-loggedIn: boolean = false;
+loggedIn: boolean = true;
   constructor(private route:Router) { }
 
   ngOnInit(): void {
