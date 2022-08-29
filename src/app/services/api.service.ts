@@ -8,7 +8,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 
 export class ApiService {
   carUrl = `https://api.api-ninjas.com/v1/cars?limit=2&model=`;
-  baseUrl = `http://localhost:5000/`
+  baseUrl = `http://localhost:5000/api/`
   sessionToken = sessionStorage.getItem('token')
   
   httpOptionsRent = {
@@ -29,8 +29,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   sendRental(rentalInfo): Observable<any> {
-    this.http.post<any>(`${this.baseUrl}rental`, rentalInfo, this.httpOptionsRent).subscribe(data => { data });
-    return null;
+    return this.http.post<any>(`${this.baseUrl}rental`, rentalInfo, this.httpOptionsRent)    
   }
 
   getSedanList(): Observable<any> {

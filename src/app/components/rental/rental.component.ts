@@ -30,15 +30,16 @@ export class RentalComponent implements OnInit {
   constructor(private apiService: ApiService, public appComponent: AppComponent, private router: Router) { }
 
   sendInfo() {
-    this.rentalInfo.push({"rentDate" : this.rentDateU})
-    this.rentalInfo.push({"returnDate" : this.returnDateU})
-    this.rentalInfo.push({"price" : this.price})
-    this.rentalInfo.push({"make" : this.selectedCar.car_make})
-    this.rentalInfo.push({"model" : this.selectedCar.car_model})
-    this.rentalInfo.push({"v_Year" : this.selectedCar.car_year})
-    this.rentalInfo.push({"v_class" : this.selectedCar.car_class})
+    this.rentalInfo.push({"rent_Date" : this.rentDateU})
+    this.rentalInfo.push({"return_Date" : this.returnDateU})
+    this.rentalInfo.push({"rent_price" : this.price})
+    this.rentalInfo.push({"car_make" : this.selectedCar.make})
+    this.rentalInfo.push({"car_model" : this.selectedCar.model})
+    this.rentalInfo.push({"car_year" : this.selectedCar.v_Year})
+    this.rentalInfo.push({"car_class" : this.selectedCar.v_Class})
     // this.rentalInfo.push({"mpg" : this.selectedCar.combination_mpg})
-    this.rentalInfo.push({"trans" : this.selectedCar.car_trans})
+    this.rentalInfo.push({"car_trans" : this.selectedCar.trans})
+
     console.log(this.rentalInfo)
     this.apiService.sendRental(this.rentalInfo)
     .subscribe({
