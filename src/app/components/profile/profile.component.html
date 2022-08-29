@@ -1,0 +1,170 @@
+<app-navbar></app-navbar>
+<div class="container mt-5 pt-4">
+    <div class="card shadow">
+        <div class="card-header">
+            <h5 class="card-title text-center fs-4">Rental History</h5>
+        </div>
+        <div class="card-body">
+            <mat-tab-group mat-align-tabs="center">
+                <mat-tab label="Past Rentals">
+                    <div class="accordion" id="accordionExample" *ngFor="let pRent of pastRentalInfo">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Rental Date
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h6 class="card-subtitle mb-2 text-muted fs-5">
+                                                Model
+                                            </h6>
+                                            <p class="card-text">Charger</p>
+                                            <h6 class="card-subtitle mb-2 text-muted fs-5">
+                                                Make
+                                            </h6>
+                                            <p class="card-text">Ford</p>
+                                            <h6 class="card-subtitle mb-2 text-muted fs-5">
+                                                Year
+                                            </h6>
+                                            <p class="card-text">2022</p>
+                                            <h6 class="card-subtitle mb-2 text-muted fs-5">
+                                                Class
+                                            </h6>
+                                            <p class="card-text">Small Car</p>
+                                            <h6 class="card-subtitle mb-2 text-muted fs-5">
+                                                Transmission
+                                            </h6>
+                                            <p class="card-text">A</p>
+                                        </div>
+                                        <div class="col">
+                                            <h6 class="card-subtitle mb-2 text-muted fs-5">
+                                                Start Date
+                                            </h6>
+                                            <p class="card-text">14/08/22</p>
+                                            <h6 class="card-subtitle mb-2 text-muted fs-5">
+                                                End Date
+                                            </h6>
+                                            <p class="card-text">26/08/22</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="In Progress">
+                    <div class="accordion" id="accordionExample" *ngFor="let cRent of currentRentalInfo">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Rental Date
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h6 class="card-subtitle mb-2 text-muted fs-5">
+                                                Model
+                                            </h6>
+                                            <p class="card-text">Charger</p>
+                                            <h6 class="card-subtitle mb-2 text-muted fs-5">
+                                                Make
+                                            </h6>
+                                            <p class="card-text">Ford</p>
+                                            <h6 class="card-subtitle mb-2 text-muted fs-5">
+                                                Year
+                                            </h6>
+                                            <p class="card-text">2022</p>
+                                            <h6 class="card-subtitle mb-2 text-muted fs-5">
+                                                Class
+                                            </h6>
+                                            <p class="card-text">Small Car</p>
+                                            <h6 class="card-subtitle mb-2 text-muted fs-5">
+                                                Transmission
+                                            </h6>
+                                            <p class="card-text">A</p>
+                                        </div>
+                                        <div class="col">
+                                            <h6 class="card-subtitle mb-2 text-muted fs-5">
+                                                Start Date
+                                            </h6>
+                                            <p class="card-text">14/08/22</p>
+                                            <h6 class="card-subtitle mb-2 text-muted fs-5">
+                                                End Date
+                                            </h6>
+                                            <p class="card-text">26/08/22</p>
+                                            <button class="btn btn-primary" (click)="setShowField()">Extend</button>
+                                            <div class="pt-3" *ngIf="showField">
+                                                <input type="date" class="form-control">
+                                                <button class="btn btn-primary mt-2 mx-auto">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Future Orders">
+                    <div class="accordion" id="accordionExample" *ngFor="let fRent of futureRentalInfo">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Rental Date
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h6 class="card-subtitle mb-2 text-muted fs-5">
+                                                Model
+                                            </h6>
+                                            <p class="card-text">Charger</p>
+                                            <h6 class="card-subtitle mb-2 text-muted fs-5">
+                                                Make
+                                            </h6>
+                                            <p class="card-text">Ford</p>
+                                            <h6 class="card-subtitle mb-2 text-muted fs-5">
+                                                Year
+                                            </h6>
+                                            <p class="card-text">2022</p>
+                                            <h6 class="card-subtitle mb-2 text-muted fs-5">
+                                                Class
+                                            </h6>
+                                            <p class="card-text">Small Car</p>
+                                            <h6 class="card-subtitle mb-2 text-muted fs-5">
+                                                Transmission
+                                            </h6>
+                                            <p class="card-text">A</p>
+                                        </div>
+                                        <div class="col">
+                                            <h6 class="card-subtitle mb-2 text-muted fs-5">
+                                                Start Date
+                                            </h6>
+                                            <p class="card-text">14/08/22</p>
+                                            <h6 class="card-subtitle mb-2 text-muted fs-5">
+                                                End Date
+                                            </h6>
+                                            <p class="card-text">26/08/22</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>
