@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
     } else if (this.password !== this.cpassword) {
       this.errorMessage = "Passwords Do Not Match";
       return
-    }else if (!!this.fname || !!this.lname || !!this.password || !!this.cpassword || !!this.email || !!this.dlnum || !!this.age) {
+    }else if (!this.fname.trim() || !this.lname.trim() || !this.password.trim() || !this.email.trim() || !this.dlnum.trim()) {
       this.errorMessage = "Certain Field Is Empty";
       return
     }

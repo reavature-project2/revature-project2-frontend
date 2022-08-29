@@ -8,12 +8,16 @@ import { catchError, Observable, throwError } from 'rxjs';
 
 export class ApiService {
   carUrl = `https://api.api-ninjas.com/v1/cars?limit=2&model=`;
-  rentUrl = `http://localhost:4200/rental`
-  sessionToken = sessionStorage.getItem('rolodex-token')
+  baseUrl = `http://localhost:5000/`
+  sessionToken = sessionStorage.getItem('token')
   
   httpOptionsRent = {
     headers: new HttpHeaders({'Content-Type' : 'application/json',
     'token' : `${this.sessionToken}`})
+  }
+
+  autherHeader = {
+    headers: new HttpHeaders({'Authorization' : `Bearer${this.sessionToken}`})
   }
   
   httpOptionsApi = {
@@ -25,7 +29,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   sendRental(rentalInfo): Observable<any> {
-    this.http.post<any>(`${this.rentUrl}`, rentalInfo, this.httpOptionsRent).subscribe(data => { data });
+    this.http.post<any>(`${this.baseUrl}rental`, rentalInfo, this.httpOptionsRent).subscribe(data => { data });
     return null;
   }
 
@@ -46,6 +50,11 @@ export class ApiService {
 
   getVanList(): Observable<any> {
     return this.http.get<any>(`${this.carUrl}vanagon+2wd`, this.httpOptionsApi)
+    .pipe(catchError(this.handleError))
+  }
+
+  getRentals(): Observable<any[]>{
+    return this.http.get<any[]>(`${this.baseUrl}`,this.autherHeader)
     .pipe(catchError(this.handleError))
   }
 
