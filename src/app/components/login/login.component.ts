@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     if (this.email.length === 0 || this.password.length === 0) {
       this.errorMessage = "A Field Is Empty";
       return
-    } else if(this.email.match(this.validRegex)){
+    } else if(!this.email.match(this.validRegex)){
       this.errorMessage = "Invalid Email Format"
     }
     else {
