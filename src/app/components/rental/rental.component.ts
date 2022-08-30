@@ -131,15 +131,17 @@ export class RentalComponent implements OnInit {
 
   setRentDate() {
     let currentDate = new Date(this.rentDate);
-    this.rentDateU = currentDate.getTime() / 1000;
+    this.rentDateU = Math.floor(currentDate.getTime() / 1000 + 86400);
     if (this.returnDateU)
+      console.log(this.rentDateU)
       this.calculatePrice()
   }
 
   setReturnDate() {
     let currentDate = new Date(this.returnDate);
-    this.returnDateU = currentDate.getTime() / 1000;
+    this.returnDateU = Math.floor(currentDate.getTime() / 1000 + 86400);
     if (this.rentDateU)
+      console.log(this.returnDateU)
       this.calculatePrice()
   }
 
