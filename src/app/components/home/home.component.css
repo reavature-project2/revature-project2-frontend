@@ -2,15 +2,15 @@ h2 {
     text-align: center;
 }
 
-#sedanInfo, #suvInfo, #truckInfo, #vanInfo {
+/* #sedanInfo, #suvInfo, #truckInfo, #vanInfo {
     align-content: center;
     border: 3px solid #fff;
     padding: 20px;
     /* width: 320px;
     height: 300px;
     border: 5px solid gray; */
-    margin: 0;
-  }
+    /* margin: 0;
+  } */
 
 /* #vehicleInfo {
     width: 50%;
@@ -27,16 +27,13 @@ h2 {
 } */
 
 #carImage {
-    width: 100%;
+    width: 17rem;
     height: 150px;
+    align-self: center;
     border-radius: 15px;
 }
 
-.center {
-    margin: auto;
-    width: 90%; 
-    padding: 10px;
-}
+
 
 button {
     margin: 0;
@@ -93,7 +90,7 @@ button:hover {
     cursor: pointer;
 } */
 
-table {
+/* table {
     margin-left: auto;
     margin-right: auto;
     border: 1px solid rgb(245, 169, 169);
@@ -105,7 +102,7 @@ tr, td {
     padding: 10px;
     border-radius: 5%;
     background-color: white;
-}
+} */
 
 .card-title {
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
