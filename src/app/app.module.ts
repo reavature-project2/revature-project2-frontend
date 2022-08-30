@@ -15,6 +15,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ProfileInfoComponent } from './components/profile-info/profile-info.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { ProfileComponent } from './components/profile/profile.component';
     LoginComponent,
     RegisterComponent,
     NavbarComponent,
-    ProfileComponent
+    ProfileComponent,
+    ProfileInfoComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
