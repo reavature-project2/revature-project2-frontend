@@ -45,7 +45,6 @@ export class HomeComponent implements OnInit{
         this.suv2.car_class = data[1].class;
         this.suv2.combination_mpg = data[1].combination_mpg;
         this.suv2.car_trans= data[1].transmission;
-        console.log(data);
       },
       error: () => this.clientMessage.message = `Could not find vehicle.`,
       complete: () => console.log('complete')
@@ -68,7 +67,6 @@ export class HomeComponent implements OnInit{
         this.truck2.car_class = data[1].class;
         this.truck2.combination_mpg = data[1].combination_mpg;
         this.truck2.car_trans= data[1].transmission;
-        console.log(data);
       },
       error: () => this.clientMessage.message = `Could not find vehicle.`,
       complete: () => console.log('complete')
@@ -91,7 +89,6 @@ export class HomeComponent implements OnInit{
         this.van2.car_class = data[1].class;
         this.van2.combination_mpg = data[1].combination_mpg;
         this.van2.car_trans= data[1].transmission;
-        console.log(data);
       },
       error: () => this.clientMessage.message = `Could not find vehicle.`,
       complete: () => console.log('complete')
@@ -114,7 +111,6 @@ export class HomeComponent implements OnInit{
         this.sedan2.car_class = data[1].class;
         this.sedan2.combination_mpg = data[1].combination_mpg;
         this.sedan2.car_trans= data[1].transmission;
-        console.log(data);
       },
       error: () => this.clientMessage.message = `Could not find vehicle.`,
       complete: () => console.log('complete')

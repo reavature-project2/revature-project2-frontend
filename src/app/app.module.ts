@@ -16,6 +16,10 @@ import { RegisterComponent } from './components/register/register.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CurrencyPipe } from '@angular/common';
+import { DatePipePipe } from './pipes/date-pipe.pipe';
+import { ProfileInfoComponent } from './components/profile-info/profile-info.component';
+import { ContactComponent } from './components/contact/contact.component';
+
 
 
 @NgModule({
@@ -28,7 +32,10 @@ import { CurrencyPipe } from '@angular/common';
     LoginComponent,
     RegisterComponent,
     NavbarComponent,
-    ProfileComponent
+    ProfileComponent,
+    DatePipePipe
+    ProfileInfoComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

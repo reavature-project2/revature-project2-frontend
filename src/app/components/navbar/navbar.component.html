@@ -2,13 +2,14 @@
     <div class="container-fluid">
         <a class="navbar-brand">Road Runner</a>
         <div class="navbar-nav d-inline" *ngIf="loggedIn">
-            <button class="btn  btn-outline-info me-3" routerLink="/home">Cars</button>
-            <button class="btn  btn-outline-info me-3" routerLink="/profile">Profile</button>
+            <button class="btn  btn-outline-info me-3" routerLink="/home">Home</button>
+            <button class="btn  btn-outline-info me-3" routerLink="/profile">Cars</button>
+            <button class="btn  btn-outline-info me-3" routerLink="/profile/info">Profile</button>
             <button class="btn  btn-outline-info" (click)="logout()">Logout</button>
         </div>
-            <div class="navbar-nav d-inline" *ngIf="!loggedIn">
-                <button class="btn  btn-outline-info me-3" routerLink="/login">Login</button>
-                <button class="btn  btn-outline-info" routerLink="/register">Register</button>
-            </div>
+        <div class="navbar-nav d-inline" *ngIf="!loggedIn">
+            <button class="btn  btn-outline-info me-3" routerLink="/login">Login</button>
+            <button class="btn  btn-outline-info" routerLink="/register">Register</button>
+        </div>
     </div>
 </nav>

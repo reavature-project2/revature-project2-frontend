@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
-import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -18,6 +17,9 @@ export class RegisterComponent implements OnInit {
   password: string = '';
   cpassword: string = '';
   errorMessage: string = '';
+  validEmail: boolean = true;
+  readonly validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  readonly letters = /^[A-Za-z]+$/;
 
   constructor(private authService: AuthService, private route: Router) { }
 
@@ -25,18 +27,22 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    if (this.age < 20) {
-      this.errorMessage = "Must Be 20 Or Older To Register";
+    if (!this.fname.trim() || !this.lname.trim() || !this.password.trim() || !this.email.trim() || !this.dlnum.trim()) {
+      this.errorMessage = "A Field Is Empty";
       return
     } else if (this.password !== this.cpassword) {
       this.errorMessage = "Passwords Do Not Match";
       return
-    }else if (!this.fname.trim() || !this.lname.trim() || !this.password.trim() || !this.email.trim() || !this.dlnum.trim()) {
-      this.errorMessage = "Certain Field Is Empty";
+    } else if (this.age < 18) {
+      this.errorMessage = "Must Be 18 Or Older To Register";
       return
+    } else if (!this.email.match(this.validRegex)) {
+      this.errorMessage = "Invalid Email Format"
+      return
+    }else if(!this.fname.match(this.letters) || !this.lname.match(this.letters) ){
+      this.errorMessage = "Name Can Only Contain Letters"
     }
     else {
-      // let user: User = new User(this.fname, this.lname, this.email, this.age, this.dlnum, this.password)
       this.authService.register(this.fname, this.lname, this.email, this.age, this.dlnum, this.password).subscribe({
         next: (response) => {
           let token = response.headers.get('rolodex-token');
@@ -44,16 +50,7 @@ export class RegisterComponent implements OnInit {
           this.route.navigate(['home'])
         },
         error: (error) => {
-          // this.authService.errorStatus
-          // console.log(this.authService.errorStatus)
-          // console.log(typeof error)
-          // console.log(error === '409')
-          // alert('')
-          // if(error === '409'){
-          //   this.errorMessage = "Email Already Exist"
-          // }else if(error === '410'){
-          //   this.errorMessage = "Drivers License Already Exist"
-          // }
+          this.errorMessage = "Invalid User Input"
         }
       })
     }

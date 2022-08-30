@@ -66,15 +66,14 @@ export class RentalComponent implements OnInit {
       "car_trans": this.selectedCar.car_trans
     }
 
-    console.log(this.rentalInfo)
     this.apiService.sendRental(this.rentalInfo)
-    .subscribe({
-      next: (data) => {
-        this.router.navigate(['profile']);
-      },
-      error: () => this.clientMessage.message = `Could not find vehicle.`,
-      complete: () => console.log('complete')
-    })
+      .subscribe({
+        next: (data) => {
+          this.router.navigate(['profile']);
+        },
+        error: () => this.clientMessage.message = `Could not find vehicle.`,
+        complete: () => console.log('complete')
+      })
   }
 
   delay(ms: number) {
@@ -119,6 +118,7 @@ export class RentalComponent implements OnInit {
       }
       if(this.price < 0) {
         this.price = 0;
+
       }
     this.dollarPrice = "$" + this.price + ".00"
     }
@@ -127,41 +127,40 @@ export class RentalComponent implements OnInit {
   calculatePrice() {
     this.days = ((this.returnDateU - this.rentDateU) / 86400) + 1
     this.priceChange()
-    console.log(this.days)
   }
 
   setRentDate() {
     let currentDate = new Date(this.rentDate);
-    this.rentDateU = currentDate.getTime()/1000;
-    if(this.returnDateU)
+    this.rentDateU = currentDate.getTime() / 1000;
+    if (this.returnDateU)
       this.calculatePrice()
-    console.log(this.rentDateU)
   }
 
   setReturnDate() {
     let currentDate = new Date(this.returnDate);
-    this.returnDateU = currentDate.getTime()/1000;
-    if(this.rentDateU)
+    this.returnDateU = currentDate.getTime() / 1000;
+    if (this.rentDateU)
       this.calculatePrice()
-    console.log(this.returnDateU)
   }
 
   setInsurance() {
     this.ins = !this.ins;
-    if(this.ins == true) {
+    if (this.ins == true) {
       this.price += 40;
     } else {
       this.price -= 40;
     }
-    console.log(this.ins)
+
     this.priceChange();
+
   }
 
   sessVar() {
     let car = sessionStorage.getItem('vehicle')
-    if(car === 'v2') {
+    if (car === 'v2') {
       this.carImg = '../../../assets/volkswagen-vanagon-m.jpg'
       this.apiService.getVanList()
+
       .subscribe({
         next: (data) => {
           this.selectedCar.car_make = data[1].make;

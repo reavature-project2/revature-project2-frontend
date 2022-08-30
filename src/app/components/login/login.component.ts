@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   email: string = '';
   password: string = '';
   errorMessage: string = "";
+  readonly validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   constructor(private autService: AuthService, private route: Router) { }
 
   ngOnInit(): void {
@@ -21,7 +22,10 @@ export class LoginComponent implements OnInit {
     if (this.email.length === 0 || this.password.length === 0) {
       this.errorMessage = "A Field Is Empty";
       return
-    } else {
+    } else if(this.email.match(this.validRegex)){
+      this.errorMessage = "Invalid Email Format"
+    }
+    else {
       this.autService.login(this.email, this.password).subscribe({
         next: (response) => {
           let token = response.headers.get('rolodex-token');
@@ -29,9 +33,7 @@ export class LoginComponent implements OnInit {
           this.route.navigate(['home'])
         },
         error: (error) => {
-          let dError = error.headers.get('error_message');
-          console.log(error.headers);
-          this.errorMessage = dError;
+          this.errorMessage ="Invalid Username/Password";
         }
       })
     }

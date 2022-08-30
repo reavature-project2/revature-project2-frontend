@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
-import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  public errorStatus:number = 0;
+  public errorStatus: number = 0;
   readonly baseUrl = "http://localhost:5000/api/";
   private header = new HttpHeaders({ 'Content-Type': 'application/json' });
   constructor(private http: HttpClient) { }
@@ -21,14 +20,14 @@ export class AuthService {
       .pipe(catchError(this.handleError));
   }
 
-  register(fname : string, lname : string, email: string, age : number, dlnum :string, password: string): Observable<HttpResponse<any>> {
+  register(fname: string, lname: string, email: string, age: number, dlnum: string, password: string): Observable<HttpResponse<any>> {
     const body = {
-      "f_name" : fname,
-      "l_name" : lname,
+      "f_name": fname,
+      "l_name": lname,
       "age": age,
-      "email" : email,
-      "pass" : password,
-      "dr_lic_number" : dlnum
+      "email": email,
+      "pass": password,
+      "dr_lic_number": dlnum
     }
     return this.http.post<HttpResponse<any>>(`${this.baseUrl}register`, body, { headers: this.header, observe: 'response' })
       .pipe(catchError(this.handleError));
@@ -38,14 +37,9 @@ export class AuthService {
     if (httpError.error instanceof ErrorEvent) {
       console.log('an error occured: ', httpError.error.message);
     } else {
-      console.error(`
-        Backend returned code ${httpError.status}
-        Backend returned code ${typeof httpError.status}
-        body was: ${httpError.headers.get('error_message')}
-      `)
-      this.errorStatus = httpError.status;
+        console.log(`Backend returned code ${httpError.status}`)
     }
-    return throwError(() => new Error(String(httpError.status)));
+    return throwError(() => new Error('something really bad happened'));
   }
 
 }
