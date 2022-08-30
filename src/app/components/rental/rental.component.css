@@ -6,13 +6,17 @@
     position: absolute;
 } */
 
-.center {
+/* #center {
     margin: auto;
     width: 60%;
-    padding: 10px;
+    padding: 100px 100px 100px 100px;
+} */
+
+#checkB {
+    padding: 10px 10px 10px 0px;
 }
 
-#vehicleInfo {
+/* #vehicleInfo {
     width: 50%;
     padding: 10px 100px;
     border: 2px solid rgb(245, 238, 238);
@@ -20,16 +24,16 @@
     background-color: rgb(233, 222, 222);
     margin-left: auto;
     margin-right: auto;
-}
+} */
 
 #main {
     border: 3px solid #fff;
     padding: 15px 15px;
-    margin-top: 2%;
+    margin-top: 3%;
     margin-left: auto;
     margin-right: auto;
-    width: 100%;
-  }
+    /* width: 100%; */
+}
 
 input[type=date], input[type=text], select {
     width: 100%;
@@ -42,7 +46,7 @@ input[type=date], input[type=text], select {
 }
 
 #carImage {
-    width: 100%;
+    width: 500px;
 }
 
 input[type=submit] {
@@ -66,18 +70,25 @@ input[type=submit]:hover {
     background-color: #45a049;
 }
 
-table {
-    /* margin-left: auto;
-    margin-right: auto;
-    margin-top: auto;
-    margin-bottom: auto; */
+/* tr, td, th {
     border: 1px solid rgb(245, 169, 169);
-    border-collapse: collapse;
-    width: 100%;
+    /* padding: 10px;
+    background-color: white; */
+
+
+.alert-primary {
+    text-align: center;
 }
 
-tr, td {
-    border: 1px solid rgb(245, 169, 169);
-    padding: 10px;
-    background-color: white;
+.table {
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid lightgrey;
+    /* border-collapse: collapse; */
+    width: 40%;
+    text-align: center;
+    border-spacing: 0;
+    border-collapse: separate;
+    border-radius: 10px;
 }
+

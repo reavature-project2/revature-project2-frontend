@@ -15,9 +15,11 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { CurrencyPipe } from '@angular/common';
 import { DatePipePipe } from './pipes/date-pipe.pipe';
 import { ProfileInfoComponent } from './components/profile-info/profile-info.component';
 import { ContactComponent } from './components/contact/contact.component';
+
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { ContactComponent } from './components/contact/contact.component';
     BrowserAnimationsModule,
     MatTabsModule
   ],
-  providers: [],
+  providers: [
+    CurrencyPipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

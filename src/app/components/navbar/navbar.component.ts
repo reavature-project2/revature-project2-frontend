@@ -25,6 +25,7 @@ this.loggedin()
 
   logout(){
     sessionStorage.removeItem('token');
+    sessionStorage.removeItem('vehicle');
     this.route.navigate(['/'])
   }
 }

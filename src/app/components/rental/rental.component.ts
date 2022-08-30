@@ -13,7 +13,7 @@ import { HomeComponent } from '../home/home.component';
 })
 export class RentalComponent implements OnInit {
 
-  selectedCar: Car = new Car('A', 'A', 0, 'A', 'A');
+  selectedCar: Car = new Car('A', 'A', 0, 'A', 0, 'A');
   clientMessage: ClientMessage = new ClientMessage('');
   rentDate: string = '';
   rentDateU;
@@ -23,13 +23,37 @@ export class RentalComponent implements OnInit {
   days: number;
   carImg: string = '';
   price: number = 0;
+  dollarPrice: string;
   calc: number = 0;
   billing: number;
   ins: boolean = false;
+  errorMessage: string = '';
+  success: string = '';
+  cCN;
+  bA;
+  cDate;
+  cDateU;
 
   constructor(private apiService: ApiService, public appComponent: AppComponent, private router: Router) { }
 
-  sendInfo() {
+  async sendInfo() {
+    if (!this.rentDateU) {
+      this.errorMessage = "You must input a rental date.";
+      return
+    }else if(this.rentDateU < this.cDateU) {
+      this.errorMessage = "You cannot select a past date.";
+      return
+    }else if (!this.returnDateU) {
+      this.errorMessage = "You must input a return date.";
+      return
+    }else if (!this.cCN || !this.bA) {
+      this.errorMessage = "You must input Credit Card and Billing Address.";
+      return
+    }
+    else {
+    }
+    this.success = "Your car rental order has been placed!";
+    await this.delay(2000);
     this.rentalInfo = {
       "rent_date": this.rentDateU,
       "return_date": this.returnDateU,
@@ -52,37 +76,56 @@ export class RentalComponent implements OnInit {
       })
   }
 
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
+
+  getCurrentDate() {
+    this.cDate = new Date();
+    this.cDateU = (this.cDate.getTime()/1000) - 86400;
+  }
+  
   priceChange() {
-    let car = sessionStorage.getItem('vehicle')
-    if (car === 's1' || car === 's2') {
-      this.calc = this.days * 30;
-      this.price = this.calc;
-      if (this.ins) {
-        this.price += 40;
+    if(this.days) {
+      let car = sessionStorage.getItem('vehicle')
+      if(car === 's1' || car === 's2') {
+        this.calc = this.days * 30;
+        this.price = this.calc;
+        if(this.price == 0) {
+          this.price += 30;
+        }
+        if(this.ins) {
+          this.price += 40;
+        }
+      } else if(car === 'v1' || car === 'v2') {
+        this.calc = this.days * 40;
+        this.price = this.calc;
+        if(this.ins) {
+          this.price += 40;
+        }
+      } else if(car === 'su1' || car === 'su2') {
+        this.calc = this.days * 45;
+        this.price = this.calc;
+        if(this.ins) {
+          this.price += 40;
+        }
+      } else {
+        this.calc = this.days * 50;
+        this.price = this.calc;
+        if(this.ins) {
+          this.price += 40;
+        }
       }
-    } else if (car === 'v1' || car === 'v2') {
-      this.calc = this.days * 40;
-      this.price = this.calc;
-      if (this.ins) {
-        this.price += 40;
+      if(this.price < 0) {
+        this.price = 0;
+
       }
-    } else if (car === 'su1' || car === 'su2') {
-      this.calc = this.days * 45;
-      this.price = this.calc;
-      if (this.ins) {
-        this.price += 40;
-      }
-    } else {
-      this.calc = this.days * 50;
-      this.price = this.calc;
-      if (this.ins) {
-        this.price += 40;
-      }
+    this.dollarPrice = "$" + this.price + ".00"
     }
   }
 
   calculatePrice() {
-    this.days = (this.returnDateU - this.rentDateU) / 86400
+    this.days = ((this.returnDateU - this.rentDateU) / 86400) + 1
     this.priceChange()
   }
 
@@ -107,6 +150,9 @@ export class RentalComponent implements OnInit {
     } else {
       this.price -= 40;
     }
+
+    this.priceChange();
+
   }
 
   sessVar() {
@@ -114,129 +160,138 @@ export class RentalComponent implements OnInit {
     if (car === 'v2') {
       this.carImg = '../../../assets/volkswagen-vanagon-m.jpg'
       this.apiService.getVanList()
-        .subscribe({
-          next: (data) => {
-            this.selectedCar.car_make = data[1].make;
-            this.selectedCar.car_model = data[1].model;
-            this.selectedCar.car_year = data[1].year;
-            this.selectedCar.car_class = data[1].class;
-            // this.selectedCar.combination_mpg = data[1].combination_mpg;
-            this.selectedCar.car_trans = data[1].transmission;
-          },
-          error: () => this.clientMessage.message = `Could not find vehicle.`,
-          complete: () => console.log('complete')
-        })
-    } else if (car === 's1') {
+
+      .subscribe({
+        next: (data) => {
+          this.selectedCar.car_make = data[1].make;
+          this.selectedCar.car_model = data[1].model;
+          this.selectedCar.car_year = data[1].year;
+          this.selectedCar.car_class = data[1].class;
+          this.selectedCar.combination_mpg = data[1].combination_mpg;
+          this.selectedCar.car_trans = data[1].transmission;
+          console.log(data);
+        },
+        error: () => this.clientMessage.message = `Could not find vehicle.`,
+        complete: () => console.log('complete')
+      })
+    } else if(car === 's1') {
       this.carImg = '../../../assets/volkswagen-passat-a.jpg'
       this.apiService.getSedanList()
-        .subscribe({
-          next: (data) => {
-            this.selectedCar.car_make = data[0].make;
-            this.selectedCar.car_model = data[0].model;
-            this.selectedCar.car_year = data[0].year;
-            this.selectedCar.car_class = data[0].class;
-            // this.selectedCar.combination_mpg = data[0].combination_mpg;
-            this.selectedCar.car_trans = data[0].transmission;
-          },
-          error: () => this.clientMessage.message = `Could not find vehicle.`,
-          complete: () => console.log('complete')
-        })
-    } else if (car === 's2') {
+      .subscribe({
+        next: (data) => {
+          this.selectedCar.car_make = data[0].make;
+          this.selectedCar.car_model = data[0].model;
+          this.selectedCar.car_year = data[0].year;
+          this.selectedCar.car_class = data[0].class;
+          this.selectedCar.combination_mpg = data[0].combination_mpg;
+          this.selectedCar.car_trans = data[0].transmission;
+          console.log(data);
+        },
+        error: () => this.clientMessage.message = `Could not find vehicle.`,
+        complete: () => console.log('complete')
+      })
+    } else if(car === 's2') {
       this.carImg = '../../../assets/volkswagen-passat-m.jpg'
       this.apiService.getSedanList()
-        .subscribe({
-          next: (data) => {
-            this.selectedCar.car_make = data[1].make;
-            this.selectedCar.car_model = data[1].model;
-            this.selectedCar.car_year = data[1].year;
-            this.selectedCar.car_class = data[1].class;
-            // this.selectedCar.combination_mpg = data[1].combination_mpg;
-            this.selectedCar.car_trans = data[1].transmission;
-          },
-          error: () => this.clientMessage.message = `Could not find vehicle.`,
-          complete: () => console.log('complete')
-        })
-    } else if (car === 'su1') {
+      .subscribe({
+        next: (data) => {
+          this.selectedCar.car_make = data[1].make;
+          this.selectedCar.car_model = data[1].model;
+          this.selectedCar.car_year = data[1].year;
+          this.selectedCar.car_class = data[1].class;
+          this.selectedCar.combination_mpg = data[1].combination_mpg;
+          this.selectedCar.car_trans = data[1].transmission;
+          console.log(data);
+        },
+        error: () => this.clientMessage.message = `Could not find vehicle.`,
+        complete: () => console.log('complete')
+      })
+    } else if(car === 'su1') {
       this.carImg = '../../../assets/mazda-navajo-a.jpg'
       this.apiService.getSuvList()
-        .subscribe({
-          next: (data) => {
-            this.selectedCar.car_make = data[0].make;
-            this.selectedCar.car_model = data[0].model;
-            this.selectedCar.car_year = data[0].year;
-            this.selectedCar.car_class = data[0].class;
-            // this.selectedCar.combination_mpg = data[0].combination_mpg;
-            this.selectedCar.car_trans = data[0].transmission;
-          },
-          error: () => this.clientMessage.message = `Could not find vehicle.`,
-          complete: () => console.log('complete')
-        })
-    } else if (car === 'su2') {
+      .subscribe({
+        next: (data) => {
+          this.selectedCar.car_make = data[0].make;
+          this.selectedCar.car_model = data[0].model;
+          this.selectedCar.car_year = data[0].year;
+          this.selectedCar.car_class = data[0].class;
+          this.selectedCar.combination_mpg = data[0].combination_mpg;
+          this.selectedCar.car_trans = data[0].transmission;
+          console.log(data);
+        },
+        error: () => this.clientMessage.message = `Could not find vehicle.`,
+        complete: () => console.log('complete')
+      })
+    } else if(car === 'su2') {
       this.carImg = '../../../assets/mazda-navajo-m.jpg'
       this.apiService.getSuvList()
-        .subscribe({
-          next: (data) => {
-            this.selectedCar.car_make = data[1].make;
-            this.selectedCar.car_model = data[1].model;
-            this.selectedCar.car_year = data[1].year;
-            this.selectedCar.car_class = data[1].class;
-            // this.selectedCar.combination_mpg = data[1].combination_mpg;
-            this.selectedCar.car_trans = data[1].transmission;
-          },
-          error: () => this.clientMessage.message = `Could not find vehicle.`,
-          complete: () => console.log('complete')
-        })
-    } else if (car === 't1') {
+      .subscribe({
+        next: (data) => {
+          this.selectedCar.car_make = data[1].make;
+          this.selectedCar.car_model = data[1].model;
+          this.selectedCar.car_year = data[1].year;
+          this.selectedCar.car_class = data[1].class;
+          this.selectedCar.combination_mpg = data[1].combination_mpg;
+          this.selectedCar.car_trans = data[1].transmission;
+          console.log(data);
+        },
+        error: () => this.clientMessage.message = `Could not find vehicle.`,
+        complete: () => console.log('complete')
+      })
+    } else if(car === 't1') {
       this.carImg = '../../../assets/ford-f150-a.jpg'
       this.apiService.getTruckList()
-        .subscribe({
-          next: (data) => {
-            this.selectedCar.car_make = data[0].make;
-            this.selectedCar.car_model = data[0].model;
-            this.selectedCar.car_year = data[0].year;
-            this.selectedCar.car_class = data[0].class;
-            // this.selectedCar.combination_mpg = data[0].combination_mpg;
-            this.selectedCar.car_trans = data[0].transmission;
-          },
-          error: () => this.clientMessage.message = `Could not find vehicle.`,
-          complete: () => console.log('complete')
-        })
-    } else if (car === 't2') {
+      .subscribe({
+        next: (data) => {
+          this.selectedCar.car_make = data[0].make;
+          this.selectedCar.car_model = data[0].model;
+          this.selectedCar.car_year = data[0].year;
+          this.selectedCar.car_class = data[0].class;
+          this.selectedCar.combination_mpg = data[0].combination_mpg;
+          this.selectedCar.car_trans = data[0].transmission;
+          console.log(data);
+        },
+        error: () => this.clientMessage.message = `Could not find vehicle.`,
+        complete: () => console.log('complete')
+      })
+    } else if(car === 't2') {
       this.carImg = '../../../assets/ford-f150-m.jpg'
       this.apiService.getTruckList()
-        .subscribe({
-          next: (data) => {
-            this.selectedCar.car_make = data[1].make;
-            this.selectedCar.car_model = data[1].model;
-            this.selectedCar.car_year = data[1].year;
-            this.selectedCar.car_class = data[1].class;
-            // this.selectedCar.combination_mpg = data[1].combination_mpg;
-            this.selectedCar.car_trans = data[1].transmission;
-          },
-          error: () => this.clientMessage.message = `Could not find vehicle.`,
-          complete: () => console.log('complete')
-        })
-    } else if (car === 'v1') {
+      .subscribe({
+        next: (data) => {
+          this.selectedCar.car_make = data[1].make;
+          this.selectedCar.car_model = data[1].model;
+          this.selectedCar.car_year = data[1].year;
+          this.selectedCar.car_class = data[1].class;
+          this.selectedCar.combination_mpg = data[1].combination_mpg;
+          this.selectedCar.car_trans = data[1].transmission;
+          console.log(data);
+        },
+        error: () => this.clientMessage.message = `Could not find vehicle.`,
+        complete: () => console.log('complete')
+      })
+    } else if(car === 'v1') {
       this.carImg = '../../../assets/volkswagen-vanagon-a.jpg'
       this.apiService.getVanList()
-        .subscribe({
-          next: (data) => {
-            this.selectedCar.car_make = data[0].make;
-            this.selectedCar.car_model = data[0].model;
-            this.selectedCar.car_year = data[0].year;
-            this.selectedCar.car_class = data[0].class;
-            // this.selectedCar.combination_mpg = data[0].combination_mpg;
-            this.selectedCar.car_trans = data[0].transmission;
-
-          },
-          error: () => this.clientMessage.message = `Could not find vehicle.`,
-          complete: () => console.log('complete')
-        })
-    }
+      .subscribe({
+        next: (data) => {
+          this.selectedCar.car_make = data[0].make;
+          this.selectedCar.car_model = data[0].model;
+          this.selectedCar.car_year = data[0].year;
+          this.selectedCar.car_class = data[0].class;
+          this.selectedCar.combination_mpg = data[0].combination_mpg;
+          this.selectedCar.car_trans = data[0].transmission;
+          console.log(data);
+        },
+        error: () => this.clientMessage.message = `Could not find vehicle.`,
+        complete: () => console.log('complete')
+      })
+    }    
   }
 
   ngOnInit(): void {
     this.sessVar()
+    this.getCurrentDate()
   }
 
 }
