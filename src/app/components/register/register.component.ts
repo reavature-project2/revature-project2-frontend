@@ -44,7 +44,16 @@ export class RegisterComponent implements OnInit {
           this.route.navigate(['home'])
         },
         error: (error) => {
-          this.errorMessage = error
+          // this.authService.errorStatus
+          // console.log(this.authService.errorStatus)
+          // console.log(typeof error)
+          // console.log(error === '409')
+          // alert('')
+          // if(error === '409'){
+          //   this.errorMessage = "Email Already Exist"
+          // }else if(error === '410'){
+          //   this.errorMessage = "Drivers License Already Exist"
+          // }
         }
       })
     }

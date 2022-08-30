@@ -24,15 +24,14 @@ showField: boolean = false;
   getRentals(){
     const todaysDate = new Date()
     let unixDate = Math.floor(todaysDate.getTime()/1000)
-    console.log(unixDate);
     this.apiService.getRentals().subscribe({
       next:(response)=>{
         response.forEach(rental =>{
-          if(rental.returnDateU < unixDate){
+          if(rental.return_date < unixDate){
             this.pastRentalInfo.push(rental);
-          }else if((rental.returnDateU > unixDate) &&(rental.rentDateU < unixDate)){
+          }else if((rental.return_date >= unixDate) &&(rental.rent_date <= unixDate)){
             this.currentRentalInfo.push(rental);
-          }else if(rental.rentDateU > unixDate){
+          }else{
             this.futureRentalInfo.push(rental);
           }
         })
