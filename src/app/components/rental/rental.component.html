@@ -1,6 +1,30 @@
 <app-navbar></app-navbar>
 <div id="main" class="center">
-    <div id="vehicleInfo">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="row"><img [src]="this.carImg" id="carImage"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>        
+                <td><b>{{this.selectedCar.car_make | titlecase}} {{this.selectedCar.car_model | titlecase}}</b></td>
+            </tr>
+            <tr>        
+                <td><b>Year:</b> {{this.selectedCar.car_year}}</td>
+            </tr>
+            <tr>
+                <td><b>Class:</b> {{this.selectedCar.car_class | titlecase}}</td>
+            </tr>
+            <tr>        
+                <td><b>MPG:</b> {{this.selectedCar.combination_mpg}}</td>
+            </tr>
+            <tr>
+                <td><b>Transmission:</b> {{this.selectedCar.car_trans | titlecase}}</td>
+            </tr>
+        </tbody>
+      </table>
+    <!-- <div id="vehicleInfo">
             <img [src]="this.carImg" id="carImage">
             <table>
                 <tr>
@@ -17,8 +41,13 @@
                 </tr>
             </table><br>
     </div>
-</div>
+</div> -->
 
+
+
+<div class="alert alert-primary" role="alert" *ngIf="this.success">
+    {{this.success}}
+  </div>
 <div class="alert alert-danger w-75 mx-auto text-center" role="alert" *ngIf="this.errorMessage">
     {{this.errorMessage}}
 </div>
@@ -28,8 +57,8 @@
         <div id="inputInfo">
             <label>Rental Date: </label><input type="date" [(ngModel)]="rentDate" (change)="setRentDate()"><br>
             <label>Return Date: </label><input type="date" [(ngModel)]="returnDate" (change)="setReturnDate()"><br>
-            <label id="checkB">Add Insurance:</label><input type="checkbox" (change)="setInsurance()"><br>
-            <label>Price: </label><input type="text" value={{price}} class="left field" readonly><br>
+            <label id="checkB">Add Insurance ($40):</label><input type="checkbox" (change)="setInsurance()"><br>
+            <label>Price: </label><input type="text" value={{dollarPrice}} class="left field" [disabled]="true"><br>
             <label>Credit Card Number: </label><input type="text" [(ngModel)]="cCN" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"><br>
             <label>Billing Address: </label><input type="text" [(ngModel)]="bA" oninput="this.value = this.value.replace(/[^A-Za-z0-9 ,]/g, '').replace(/(\..*)\./g, '$1');"><br>
             <br><input type="submit" value="Submit" (click)="this.sendInfo()">

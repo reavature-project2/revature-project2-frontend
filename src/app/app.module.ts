@@ -15,6 +15,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { CurrencyPipe } from '@angular/common';
 
 
 @NgModule({
@@ -37,7 +38,9 @@ import { ProfileComponent } from './components/profile/profile.component';
     BrowserAnimationsModule,
     MatTabsModule
   ],
-  providers: [],
+  providers: [
+    CurrencyPipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

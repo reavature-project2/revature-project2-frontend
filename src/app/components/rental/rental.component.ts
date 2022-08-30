@@ -23,10 +23,12 @@ export class RentalComponent implements OnInit {
   days: number;
   carImg: string = '';
   price: number = 0;
+  dollarPrice: string;
   calc: number = 0;
   billing: number;
   ins: boolean = false;
   errorMessage: string = '';
+  success: string = '';
   cCN;
   bA;
   cDate;
@@ -34,11 +36,11 @@ export class RentalComponent implements OnInit {
 
   constructor(private apiService: ApiService, public appComponent: AppComponent, private router: Router) { }
 
-  sendInfo() {
+  async sendInfo() {
     if (!this.rentDateU) {
       this.errorMessage = "You must input a rental date.";
       return
-    }else if(this.rentDateU - 86400 <= this.cDateU) {
+    }else if(this.rentDateU < this.cDateU) {
       this.errorMessage = "You cannot select a past date.";
       return
     }else if (!this.returnDateU) {
@@ -50,6 +52,8 @@ export class RentalComponent implements OnInit {
     }
     else {
     }
+    this.success = "Your car rental order has been placed!";
+    await this.delay(2000);
     this.rentalInfo = {
       "rent_date": this.rentDateU,
       "return_date": this.returnDateU,
@@ -73,45 +77,55 @@ export class RentalComponent implements OnInit {
     })
   }
 
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
+
   getCurrentDate() {
     this.cDate = new Date();
     this.cDateU = (this.cDate.getTime()/1000) - 86400;
   }
   
   priceChange() {
-    let car = sessionStorage.getItem('vehicle')
-    if(car === 's1' || car === 's2') {
-      this.calc = this.days * 30;
-      this.price = this.calc;
-      if(this.ins) {
-        this.price += 40;
+    if(this.days) {
+      let car = sessionStorage.getItem('vehicle')
+      if(car === 's1' || car === 's2') {
+        this.calc = this.days * 30;
+        this.price = this.calc;
+        if(this.price == 0) {
+          this.price += 30;
+        }
+        if(this.ins) {
+          this.price += 40;
+        }
+      } else if(car === 'v1' || car === 'v2') {
+        this.calc = this.days * 40;
+        this.price = this.calc;
+        if(this.ins) {
+          this.price += 40;
+        }
+      } else if(car === 'su1' || car === 'su2') {
+        this.calc = this.days * 45;
+        this.price = this.calc;
+        if(this.ins) {
+          this.price += 40;
+        }
+      } else {
+        this.calc = this.days * 50;
+        this.price = this.calc;
+        if(this.ins) {
+          this.price += 40;
+        }
       }
-    } else if(car === 'v1' || car === 'v2') {
-      this.calc = this.days * 40;
-      this.price = this.calc;
-      if(this.ins) {
-        this.price += 40;
+      if(this.price < 0) {
+        this.price = 0;
       }
-    } else if(car === 'su1' || car === 'su2') {
-      this.calc = this.days * 45;
-      this.price = this.calc;
-      if(this.ins) {
-        this.price += 40;
-      }
-    } else {
-      this.calc = this.days * 50;
-      this.price = this.calc;
-      if(this.ins) {
-        this.price += 40;
-      }
-    }
-    if(this.price < 0) {
-      this.price = 0;
+    this.dollarPrice = "$" + this.price + ".00"
     }
   }
 
   calculatePrice() {
-    this.days = (this.returnDateU - this.rentDateU) / 86400
+    this.days = ((this.returnDateU - this.rentDateU) / 86400) + 1
     this.priceChange()
     console.log(this.days)
   }
@@ -140,6 +154,7 @@ export class RentalComponent implements OnInit {
       this.price -= 40;
     }
     console.log(this.ins)
+    this.priceChange();
   }
 
   sessVar() {
@@ -153,7 +168,7 @@ export class RentalComponent implements OnInit {
           this.selectedCar.car_model = data[1].model;
           this.selectedCar.car_year = data[1].year;
           this.selectedCar.car_class = data[1].class;
-          // this.selectedCar.combination_mpg = data[1].combination_mpg;
+          this.selectedCar.combination_mpg = data[1].combination_mpg;
           this.selectedCar.car_trans = data[1].transmission;
           console.log(data);
         },
@@ -169,7 +184,7 @@ export class RentalComponent implements OnInit {
           this.selectedCar.car_model = data[0].model;
           this.selectedCar.car_year = data[0].year;
           this.selectedCar.car_class = data[0].class;
-          // this.selectedCar.combination_mpg = data[0].combination_mpg;
+          this.selectedCar.combination_mpg = data[0].combination_mpg;
           this.selectedCar.car_trans = data[0].transmission;
           console.log(data);
         },
@@ -185,7 +200,7 @@ export class RentalComponent implements OnInit {
           this.selectedCar.car_model = data[1].model;
           this.selectedCar.car_year = data[1].year;
           this.selectedCar.car_class = data[1].class;
-          // this.selectedCar.combination_mpg = data[1].combination_mpg;
+          this.selectedCar.combination_mpg = data[1].combination_mpg;
           this.selectedCar.car_trans = data[1].transmission;
           console.log(data);
         },
@@ -201,7 +216,7 @@ export class RentalComponent implements OnInit {
           this.selectedCar.car_model = data[0].model;
           this.selectedCar.car_year = data[0].year;
           this.selectedCar.car_class = data[0].class;
-          // this.selectedCar.combination_mpg = data[0].combination_mpg;
+          this.selectedCar.combination_mpg = data[0].combination_mpg;
           this.selectedCar.car_trans = data[0].transmission;
           console.log(data);
         },
@@ -217,7 +232,7 @@ export class RentalComponent implements OnInit {
           this.selectedCar.car_model = data[1].model;
           this.selectedCar.car_year = data[1].year;
           this.selectedCar.car_class = data[1].class;
-          // this.selectedCar.combination_mpg = data[1].combination_mpg;
+          this.selectedCar.combination_mpg = data[1].combination_mpg;
           this.selectedCar.car_trans = data[1].transmission;
           console.log(data);
         },
@@ -233,7 +248,7 @@ export class RentalComponent implements OnInit {
           this.selectedCar.car_model = data[0].model;
           this.selectedCar.car_year = data[0].year;
           this.selectedCar.car_class = data[0].class;
-          // this.selectedCar.combination_mpg = data[0].combination_mpg;
+          this.selectedCar.combination_mpg = data[0].combination_mpg;
           this.selectedCar.car_trans = data[0].transmission;
           console.log(data);
         },
@@ -249,7 +264,7 @@ export class RentalComponent implements OnInit {
           this.selectedCar.car_model = data[1].model;
           this.selectedCar.car_year = data[1].year;
           this.selectedCar.car_class = data[1].class;
-          // this.selectedCar.combination_mpg = data[1].combination_mpg;
+          this.selectedCar.combination_mpg = data[1].combination_mpg;
           this.selectedCar.car_trans = data[1].transmission;
           console.log(data);
         },
@@ -265,7 +280,7 @@ export class RentalComponent implements OnInit {
           this.selectedCar.car_model = data[0].model;
           this.selectedCar.car_year = data[0].year;
           this.selectedCar.car_class = data[0].class;
-          // this.selectedCar.combination_mpg = data[0].combination_mpg;
+          this.selectedCar.combination_mpg = data[0].combination_mpg;
           this.selectedCar.car_trans = data[0].transmission;
           console.log(data);
         },
