@@ -33,7 +33,7 @@ import { ContactComponent } from './components/contact/contact.component';
     RegisterComponent,
     NavbarComponent,
     ProfileComponent,
-    DatePipePipe
+    DatePipePipe,
     ProfileInfoComponent,
     ContactComponent
   ],
