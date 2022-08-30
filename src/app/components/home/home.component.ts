@@ -122,49 +122,41 @@ export class HomeComponent implements OnInit{
   }
 
   sedanOne() {
-    sessionStorage.setItem('token', '3dsjas83hfa8dsfh38asdhfhas');
     sessionStorage.setItem('vehicle', 's1');
     this.router.navigate(['/rental']);
   }
 
   sedanTwo() {
-    sessionStorage.setItem('token', '3dsjas83hfa8dsfh38asdhfhas');
     sessionStorage.setItem('vehicle', 's2');
     this.router.navigate(['/rental']);
   }
 
   suvOne() {
-    sessionStorage.setItem('token', '3dsjas83hfa8dsfh38asdhfhas');
     sessionStorage.setItem('vehicle', 'su1');
     this.router.navigate(['/rental']);
   }
 
   suvTwo() {
-    sessionStorage.setItem('token', '3dsjas83hfa8dsfh38asdhfhas');
     sessionStorage.setItem('vehicle', 'su2');
     this.router.navigate(['/rental']);
   }
 
   truckOne() {
-    sessionStorage.setItem('token', '3dsjas83hfa8dsfh38asdhfhas');
     sessionStorage.setItem('vehicle', 't1');
     this.router.navigate(['/rental']);
   }
 
   truckTwo() {
-    sessionStorage.setItem('token', '3dsjas83hfa8dsfh38asdhfhas');
     sessionStorage.setItem('vehicle', 't2');
     this.router.navigate(['/rental']);
   }
 
   vanOne() {
-    sessionStorage.setItem('token', '3dsjas83hfa8dsfh38asdhfhas');
     sessionStorage.setItem('vehicle', 'v1');
     this.router.navigate(['/rental']);
   }
 
   vanTwo() {
-    sessionStorage.setItem('token', '3dsjas83hfa8dsfh38asdhfhas');
     sessionStorage.setItem('vehicle', 'v2');
     this.router.navigate(['/rental']);
   }

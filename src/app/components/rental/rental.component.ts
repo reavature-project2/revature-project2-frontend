@@ -19,7 +19,7 @@ export class RentalComponent implements OnInit {
   rentDateU;
   returnDate: string = '';
   returnDateU;
-  rentalInfo: Array<any> = [];
+  rentalInfo: {} = {};
   days: number;
   carImg: string = '';
   price: number = 0;
@@ -30,21 +30,24 @@ export class RentalComponent implements OnInit {
   constructor(private apiService: ApiService, public appComponent: AppComponent, private router: Router) { }
 
   sendInfo() {
-    this.rentalInfo.push({"rent_date" : this.rentDateU})
-    this.rentalInfo.push({"return_date" : this.returnDateU})
-    this.rentalInfo.push({"rent_price" : this.price})
-    this.rentalInfo.push({"car_make" : this.selectedCar.car_make})
-    this.rentalInfo.push({"car_model" : this.selectedCar.car_model})
-    this.rentalInfo.push({"car_year" : this.selectedCar.car_year})
-    this.rentalInfo.push({"car_class" : this.selectedCar.car_class})
-    // this.rentalInfo.push({"mpg" : this.selectedCar.combination_mpg})
-    this.rentalInfo.push({"car_trans" : this.selectedCar.car_trans})
+    this.rentalInfo = {
+      "rent_date": this.rentDateU,
+      "return_date": this.returnDateU,
+      "rent_price": this.price,
+      "car_make": this.selectedCar.car_make,
+      "car_model": this.selectedCar.car_model,
+      "car_year": this.selectedCar.car_year,
+      "car_class": this.selectedCar.car_class,
+      // this.rentalInfo.push({"mpg" : this.selectedCar.combination_mpg})
+      "car_trans": this.selectedCar.car_trans
+    }
+
 
     console.log(this.rentalInfo)
     this.apiService.sendRental(this.rentalInfo)
     .subscribe({
       next: (data) => {
-        console.log(data);
+        this.router.navigate(['profile']);
       },
       error: () => this.clientMessage.message = `Could not find vehicle.`,
       complete: () => console.log('complete')

@@ -12,7 +12,7 @@
                             <h2 class="accordion-header" id="headingOne">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    Rental Date
+                                   {{pRent.return_date}}
                                 </button>
                             </h2>
                             <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
@@ -23,33 +23,33 @@
                                             <h6 class="card-subtitle mb-2 text-muted fs-5">
                                                 Model
                                             </h6>
-                                            <p class="card-text">Charger</p>
+                                            <p class="card-text">{{pRent.car_model}}</p>
                                             <h6 class="card-subtitle mb-2 text-muted fs-5">
                                                 Make
                                             </h6>
-                                            <p class="card-text">Ford</p>
+                                            <p class="card-text">{{pRent.car_make}}</p>
                                             <h6 class="card-subtitle mb-2 text-muted fs-5">
                                                 Year
                                             </h6>
-                                            <p class="card-text">2022</p>
+                                            <p class="card-text">{{pRent.car_year}}</p>
                                             <h6 class="card-subtitle mb-2 text-muted fs-5">
                                                 Class
                                             </h6>
-                                            <p class="card-text">Small Car</p>
+                                            <p class="card-text">{{pRent.car_class}}</p>
                                             <h6 class="card-subtitle mb-2 text-muted fs-5">
                                                 Transmission
                                             </h6>
-                                            <p class="card-text">A</p>
+                                            <p class="card-text">{{pRent.car_trans}}</p>
                                         </div>
                                         <div class="col">
                                             <h6 class="card-subtitle mb-2 text-muted fs-5">
                                                 Start Date
                                             </h6>
-                                            <p class="card-text">14/08/22</p>
+                                            <p class="card-text">{{pRent.rent_date}}</p>
                                             <h6 class="card-subtitle mb-2 text-muted fs-5">
                                                 End Date
                                             </h6>
-                                            <p class="card-text">26/08/22</p>
+                                            <p class="card-text">{{pRent.return_date}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -63,7 +63,7 @@
                             <h2 class="accordion-header" id="headingOne">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    Rental Date
+                                   {{cRent.return_date}}
                                 </button>
                             </h2>
                             <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
@@ -74,33 +74,33 @@
                                             <h6 class="card-subtitle mb-2 text-muted fs-5">
                                                 Model
                                             </h6>
-                                            <p class="card-text">Charger</p>
+                                            <p class="card-text">{{cRent.car_model}}</p>
                                             <h6 class="card-subtitle mb-2 text-muted fs-5">
                                                 Make
                                             </h6>
-                                            <p class="card-text">Ford</p>
+                                            <p class="card-text">{{cRent.car_make}}</p>
                                             <h6 class="card-subtitle mb-2 text-muted fs-5">
                                                 Year
                                             </h6>
-                                            <p class="card-text">2022</p>
+                                            <p class="card-text">{{cRent.car_year}}</p>
                                             <h6 class="card-subtitle mb-2 text-muted fs-5">
                                                 Class
                                             </h6>
-                                            <p class="card-text">Small Car</p>
+                                            <p class="card-text">{{cRent.car_class}}</p>
                                             <h6 class="card-subtitle mb-2 text-muted fs-5">
                                                 Transmission
                                             </h6>
-                                            <p class="card-text">A</p>
+                                            <p class="card-text">{{cRent.car_trans}}</p>
                                         </div>
                                         <div class="col">
                                             <h6 class="card-subtitle mb-2 text-muted fs-5">
                                                 Start Date
                                             </h6>
-                                            <p class="card-text">14/08/22</p>
+                                            <p class="card-text">{{cRent.rent_date}}</p>
                                             <h6 class="card-subtitle mb-2 text-muted fs-5">
                                                 End Date
                                             </h6>
-                                            <p class="card-text">26/08/22</p>
+                                            <p class="card-text">{{cRent.return_date}}</p>
                                             <button class="btn btn-primary" (click)="setShowField()">Extend</button>
                                             <div class="pt-3" *ngIf="showField">
                                                 <input type="date" class="form-control">
@@ -119,7 +119,7 @@
                             <h2 class="accordion-header" id="headingOne">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    Rental Date
+                                   {{fRent.return_date}}
                                 </button>
                             </h2>
                             <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
@@ -130,33 +130,33 @@
                                             <h6 class="card-subtitle mb-2 text-muted fs-5">
                                                 Model
                                             </h6>
-                                            <p class="card-text">Charger</p>
+                                            <p class="card-text">{{fRent.car_model}}</p>
                                             <h6 class="card-subtitle mb-2 text-muted fs-5">
                                                 Make
                                             </h6>
-                                            <p class="card-text">Ford</p>
+                                            <p class="card-text">{{fRent.car_make}}</p>
                                             <h6 class="card-subtitle mb-2 text-muted fs-5">
                                                 Year
                                             </h6>
-                                            <p class="card-text">2022</p>
+                                            <p class="card-text">{{fRent.car_year}}</p>
                                             <h6 class="card-subtitle mb-2 text-muted fs-5">
                                                 Class
                                             </h6>
-                                            <p class="card-text">Small Car</p>
+                                            <p class="card-text">{{fRent.car_class}}</p>
                                             <h6 class="card-subtitle mb-2 text-muted fs-5">
                                                 Transmission
                                             </h6>
-                                            <p class="card-text">A</p>
+                                            <p class="card-text">{{fRent.car_trans}}</p>
                                         </div>
                                         <div class="col">
                                             <h6 class="card-subtitle mb-2 text-muted fs-5">
                                                 Start Date
                                             </h6>
-                                            <p class="card-text">14/08/22</p>
+                                            <p class="card-text">{{fRent.rent_date}}</p>
                                             <h6 class="card-subtitle mb-2 text-muted fs-5">
                                                 End Date
                                             </h6>
-                                            <p class="card-text">26/08/22</p>
+                                            <p class="card-text">{{fRent.return_date}}</p>
                                         </div>
                                     </div>
                                 </div>

@@ -17,7 +17,7 @@ export class ApiService {
   }
 
   autherHeader = {
-    headers: new HttpHeaders({'Authorization' : `Bearer${this.sessionToken}`})
+    headers: new HttpHeaders({'rolodex-token' : `${this.sessionToken}`})
   }
   
   httpOptionsApi = {
@@ -54,7 +54,7 @@ export class ApiService {
   }
 
   getRentals(): Observable<any[]>{
-    return this.http.get<any[]>(`${this.baseUrl}`,this.autherHeader)
+    return this.http.get<any[]>(`${this.baseUrl}profile`,this.autherHeader)
     .pipe(catchError(this.handleError))
   }
 

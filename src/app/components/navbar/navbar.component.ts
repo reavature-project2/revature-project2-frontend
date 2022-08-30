@@ -11,7 +11,7 @@ loggedIn: boolean = false;
   constructor(private route:Router) { }
 
   ngOnInit(): void {
-
+this.loggedin()
   }
 
   loggedin(){

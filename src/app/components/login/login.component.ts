@@ -29,7 +29,9 @@ export class LoginComponent implements OnInit {
           this.route.navigate(['home'])
         },
         error: (error) => {
-          this.errorMessage = "Invalid User Or Password"
+          let dError = error.headers.get('error_message');
+          console.log(error.headers);
+          this.errorMessage = dError;
         }
       })
     }

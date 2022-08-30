@@ -7,6 +7,7 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class AuthService {
+  public errorStatus:number = 0;
   readonly baseUrl = "http://localhost:5000/api/";
   private header = new HttpHeaders({ 'Content-Type': 'application/json' });
   constructor(private http: HttpClient) { }
@@ -29,7 +30,7 @@ export class AuthService {
       "pass" : password,
       "dr_lic_number" : dlnum
     }
-    return this.http.post<any>(`${this.baseUrl}register`, body, { headers: this.header, observe: 'response' })
+    return this.http.post<HttpResponse<any>>(`${this.baseUrl}register`, body, { headers: this.header, observe: 'response' })
       .pipe(catchError(this.handleError));
   }
 
@@ -39,10 +40,12 @@ export class AuthService {
     } else {
       console.error(`
         Backend returned code ${httpError.status}
-        body was: ${httpError.error}
+        Backend returned code ${typeof httpError.status}
+        body was: ${httpError.headers.get('error_message')}
       `)
+      this.errorStatus = httpError.status;
     }
-    return throwError(() => new Error('something really bad happened'));
+    return throwError(() => new Error(String(httpError.status)));
   }
 
 }
