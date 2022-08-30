@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
-import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -38,14 +37,9 @@ export class AuthService {
     if (httpError.error instanceof ErrorEvent) {
       console.log('an error occured: ', httpError.error.message);
     } else {
-      console.error(`
-        Backend returned code ${httpError.status}
-        Backend returned code ${typeof httpError.status}
-        body was: ${httpError.headers.get('error_message')}
-      `)
-      this.errorStatus = httpError.status;
+        console.log(`Backend returned code ${httpError.status}`)
     }
-    return throwError(() => new Error(String(httpError.status)));
+    return throwError(() => new Error('something really bad happened'));
   }
 
 }

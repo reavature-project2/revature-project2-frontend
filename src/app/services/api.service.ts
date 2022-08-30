@@ -62,10 +62,7 @@ export class ApiService {
     if (httpError.error instanceof ErrorEvent) {
       console.log('an error occured: ', httpError.error.message);
     } else {
-      console.error(`
-        Backend returned code ${httpError.status}
-        body was: ${httpError.error}
-      `)
+        console.log(`Backend returned code ${httpError.status}`)
     }
     return throwError(() => new Error('something really bad happened'));
   }

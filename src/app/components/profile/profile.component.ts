@@ -11,6 +11,7 @@ pastRentalInfo: any[] =[];
 currentRentalInfo: any[] =[];
 futureRentalInfo: any[] =[];
 showField: boolean = false;
+tDate: number= new Date().getTime()/1000;
   constructor(private apiService:ApiService) { }
 
   ngOnInit(): void {
