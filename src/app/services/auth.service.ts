@@ -6,7 +6,7 @@ import { catchError, Observable, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  public errorStatus:number = 0;
+  public errorStatus: number = 0;
   readonly baseUrl = "http://localhost:5000/api/";
   private header = new HttpHeaders({ 'Content-Type': 'application/json' });
   constructor(private http: HttpClient) { }
@@ -20,14 +20,14 @@ export class AuthService {
       .pipe(catchError(this.handleError));
   }
 
-  register(fname : string, lname : string, email: string, age : number, dlnum :string, password: string): Observable<HttpResponse<any>> {
+  register(fname: string, lname: string, email: string, age: number, dlnum: string, password: string): Observable<HttpResponse<any>> {
     const body = {
-      "f_name" : fname,
-      "l_name" : lname,
+      "f_name": fname,
+      "l_name": lname,
       "age": age,
-      "email" : email,
-      "pass" : password,
-      "dr_lic_number" : dlnum
+      "email": email,
+      "pass": password,
+      "dr_lic_number": dlnum
     }
     return this.http.post<HttpResponse<any>>(`${this.baseUrl}register`, body, { headers: this.header, observe: 'response' })
       .pipe(catchError(this.handleError));

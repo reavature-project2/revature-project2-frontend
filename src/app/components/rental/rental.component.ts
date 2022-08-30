@@ -42,8 +42,6 @@ export class RentalComponent implements OnInit {
       "car_trans": this.selectedCar.car_trans
     }
 
-
-    console.log(this.rentalInfo)
     this.apiService.sendRental(this.rentalInfo)
       .subscribe({
         next: (data) => {
@@ -229,6 +227,7 @@ export class RentalComponent implements OnInit {
             this.selectedCar.car_class = data[0].class;
             // this.selectedCar.combination_mpg = data[0].combination_mpg;
             this.selectedCar.car_trans = data[0].transmission;
+
           },
           error: () => this.clientMessage.message = `Could not find vehicle.`,
           complete: () => console.log('complete')
