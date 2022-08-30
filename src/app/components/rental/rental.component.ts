@@ -13,7 +13,7 @@ import { HomeComponent } from '../home/home.component';
 })
 export class RentalComponent implements OnInit {
 
-  selectedCar: Car = new Car('A', 'A', 0, 'A', 'A');
+  selectedCar: Car = new Car('A', 'A', 0, 'A', 0, 'A');
   clientMessage: ClientMessage = new ClientMessage('');
   rentDate: string = '';
   rentDateU;
@@ -26,10 +26,30 @@ export class RentalComponent implements OnInit {
   calc: number = 0;
   billing: number;
   ins: boolean = false;
+  errorMessage: string = '';
+  cCN;
+  bA;
+  cDate;
+  cDateU;
 
   constructor(private apiService: ApiService, public appComponent: AppComponent, private router: Router) { }
 
   sendInfo() {
+    if (!this.rentDateU) {
+      this.errorMessage = "You must input a rental date.";
+      return
+    }else if(this.rentDateU - 86400 <= this.cDateU) {
+      this.errorMessage = "You cannot select a past date.";
+      return
+    }else if (!this.returnDateU) {
+      this.errorMessage = "You must input a return date.";
+      return
+    }else if (!this.cCN || !this.bA) {
+      this.errorMessage = "You must input Credit Card and Billing Address.";
+      return
+    }
+    else {
+    }
     this.rentalInfo = {
       "rent_date": this.rentDateU,
       "return_date": this.returnDateU,
@@ -42,7 +62,6 @@ export class RentalComponent implements OnInit {
       "car_trans": this.selectedCar.car_trans
     }
 
-
     console.log(this.rentalInfo)
     this.apiService.sendRental(this.rentalInfo)
     .subscribe({
@@ -52,6 +71,11 @@ export class RentalComponent implements OnInit {
       error: () => this.clientMessage.message = `Could not find vehicle.`,
       complete: () => console.log('complete')
     })
+  }
+
+  getCurrentDate() {
+    this.cDate = new Date();
+    this.cDateU = (this.cDate.getTime()/1000) - 86400;
   }
   
   priceChange() {
@@ -80,6 +104,9 @@ export class RentalComponent implements OnInit {
       if(this.ins) {
         this.price += 40;
       }
+    }
+    if(this.price < 0) {
+      this.price = 0;
     }
   }
 
@@ -250,6 +277,7 @@ export class RentalComponent implements OnInit {
 
   ngOnInit(): void {
     this.sessVar()
+    this.getCurrentDate()
   }
 
 }

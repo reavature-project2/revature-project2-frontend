@@ -15,14 +15,14 @@ import { RentalComponent } from '../rental/rental.component';
 export class HomeComponent implements OnInit{
 
   title = 'Home Page'
-  sedan1: Car = new Car('A', 'A', 0, 'A', 'A')
-  sedan2: Car = new Car('A', 'A', 0, 'A',  'A')
-  suv1: Car = new Car('A', 'A', 0, 'A',  'A')
-  suv2: Car = new Car('A', 'A', 0, 'A',  'A')
-  truck1: Car = new Car('A', 'A', 0, 'A',  'A')
-  truck2: Car = new Car('A', 'A', 0, 'A',  'A')
-  van1: Car = new Car('A', 'A', 0, 'A',  'A')
-  van2: Car = new Car('A', 'A', 0, 'A',  'A')
+  sedan1: Car = new Car('A', 'A', 0, 'A', 0, 'A')
+  sedan2: Car = new Car('A', 'A', 0, 'A', 0, 'A')
+  suv1: Car = new Car('A', 'A', 0, 'A',  0, 'A')
+  suv2: Car = new Car('A', 'A', 0, 'A',  0, 'A')
+  truck1: Car = new Car('A', 'A', 0, 'A', 0, 'A')
+  truck2: Car = new Car('A', 'A', 0, 'A', 0, 'A')
+  van1: Car = new Car('A', 'A', 0, 'A', 0, 'A')
+  van2: Car = new Car('A', 'A', 0, 'A', 0, 'A')
   clientMessage: ClientMessage = new ClientMessage('');
   
 
@@ -33,17 +33,17 @@ export class HomeComponent implements OnInit{
     this.apiService.getSuvList()
     .subscribe({
       next: (data) => {
-        this.suv1.car_make = data[0].car_make;
-        this.suv1.car_model = data[0].car_model;
+        this.suv1.car_make = data[0].make;
+        this.suv1.car_model = data[0].model;
         this.suv1.car_year = data[0].year;
         this.suv1.car_class = data[0].class;
-        // this.suv1.combination_mpg = data[0].combination_mpg;
+        this.suv1.combination_mpg = data[0].combination_mpg;
         this.suv1.car_trans= data[0].transmission;
-        this.suv2.car_make = data[1].car_make;
-        this.suv2.car_model = data[1].car_model;
+        this.suv2.car_make = data[1].make;
+        this.suv2.car_model = data[1].model;
         this.suv2.car_year = data[1].year;
         this.suv2.car_class = data[1].class;
-        // this.suv2.combination_mpg = data[1].combination_mpg;
+        this.suv2.combination_mpg = data[1].combination_mpg;
         this.suv2.car_trans= data[1].transmission;
         console.log(data);
       },
@@ -56,17 +56,17 @@ export class HomeComponent implements OnInit{
     this.apiService.getTruckList()
     .subscribe({
       next: (data) => {
-        this.truck1.car_make = data[0].car_make;
-        this.truck1.car_model = data[0].car_model;
+        this.truck1.car_make = data[0].make;
+        this.truck1.car_model = data[0].model;
         this.truck1.car_year = data[0].year;
         this.truck1.car_class = data[0].class;
-        // this.truck1.combination_mpg = data[0].combination_mpg;
+        this.truck1.combination_mpg = data[0].combination_mpg;
         this.truck1.car_trans= data[0].transmission;
-        this.truck2.car_make = data[1].car_make;
-        this.truck2.car_model = data[1].car_model;
+        this.truck2.car_make = data[1].make;
+        this.truck2.car_model = data[1].model;
         this.truck2.car_year = data[1].year;
         this.truck2.car_class = data[1].class;
-        // this.truck2.combination_mpg = data[1].combination_mpg;
+        this.truck2.combination_mpg = data[1].combination_mpg;
         this.truck2.car_trans= data[1].transmission;
         console.log(data);
       },
@@ -79,17 +79,17 @@ export class HomeComponent implements OnInit{
     this.apiService.getVanList()
     .subscribe({
       next: (data) => {
-        this.van1.car_make = data[0].car_make;
-        this.van1.car_model = data[0].car_model;
+        this.van1.car_make = data[0].make;
+        this.van1.car_model = data[0].model;
         this.van1.car_year = data[0].year;
         this.van1.car_class = data[0].class;
-        // this.van1.combination_mpg = data[0].combination_mpg;
+        this.van1.combination_mpg = data[0].combination_mpg;
         this.van1.car_trans= data[0].transmission;
-        this.van2.car_make = data[1].car_make;
-        this.van2.car_model = data[1].car_model;
+        this.van2.car_make = data[1].make;
+        this.van2.car_model = data[1].model;
         this.van2.car_year = data[1].year;
         this.van2.car_class = data[1].class;
-        // this.van2.combination_mpg = data[1].combination_mpg;
+        this.van2.combination_mpg = data[1].combination_mpg;
         this.van2.car_trans= data[1].transmission;
         console.log(data);
       },
@@ -102,17 +102,17 @@ export class HomeComponent implements OnInit{
     this.apiService.getSedanList()
     .subscribe({
       next: (data) => {
-        this.sedan1.car_make = data[0].car_make;
+        this.sedan1.car_make = data[0].make;
         this.sedan1.car_model = data[0].model;
         this.sedan1.car_year = data[0].year;
         this.sedan1.car_class = data[0].class;
-        // this.sedan1.combination_mpg = data[0].combination_mpg;
-        this.sedan1.car_trans= data[0].transmission;
-        this.sedan2.car_make = data[1].car_make;
+        this.sedan1.combination_mpg = data[0].combination_mpg;
+        this.sedan1.car_trans = data[0].transmission;
+        this.sedan2.car_make = data[1].make;
         this.sedan2.car_model = data[1].model;
         this.sedan2.car_year = data[1].year;
         this.sedan2.car_class = data[1].class;
-        // this.sedan2.combination_mpg = data[1].combination_mpg;
+        this.sedan2.combination_mpg = data[1].combination_mpg;
         this.sedan2.car_trans= data[1].transmission;
         console.log(data);
       },
@@ -161,7 +161,12 @@ export class HomeComponent implements OnInit{
     this.router.navigate(['/rental']);
   }
 
+  clearCar() {
+    sessionStorage.removeItem('vehicle');
+  }
+
   ngOnInit(): void {
+    this.clearCar();
     this.getSedans();
     this.getSuvs();
     this.getTrucks();
