@@ -20,6 +20,7 @@ export class RegisterComponent implements OnInit {
   validEmail: boolean = true;
   readonly validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   readonly letters = /^[A-Za-z]+$/;
+  readonly alphanum = /^([a-zA-Z0-9 _-]+)$/;
 
   constructor(private authService: AuthService, private route: Router) { }
 
@@ -41,6 +42,9 @@ export class RegisterComponent implements OnInit {
       return
     }else if(!this.fname.match(this.letters) || !this.lname.match(this.letters) ){
       this.errorMessage = "Name Can Only Contain Letters"
+    }else if(!this.dlnum.match(this.alphanum)){
+      this.errorMessage = "Invalid Driver License Format"
+      return
     }
     else {
       this.authService.register(this.fname, this.lname, this.email, this.age, this.dlnum, this.password).subscribe({
