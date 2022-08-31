@@ -79,5 +79,9 @@ export class ApiService {
   updateUserPassword(newPassword): Observable<any> {
     return this.http.patch<any>(`${this.baseUrl}profile/info`, newPassword, this.httpOptionsRent)
   }
+
+  addUserMessage(newMessage): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}contact`, newMessage, this.httpOptionsRent)
+  }
 }
 

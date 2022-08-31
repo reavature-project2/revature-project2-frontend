@@ -1,4 +1,3 @@
-import { AuthService } from 'src/app/services/auth.service';
 import { ApiService } from 'src/app/services/api.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile-info.component.css']
 })
 export class ProfileInfoComponent implements OnInit {
+
   firstName: string = "";
   lastName: string = "";
   emailId: string = "";
@@ -69,7 +69,6 @@ export class ProfileInfoComponent implements OnInit {
       this.showErrorMessage("Error: fields do not match", false);
       return null;
     } else {
-      console.log(this.newPasswordOne, this.newPasswordTwo);
       let newPassword = {
         "username": this.emailId,
         "password": this.newPasswordOne
